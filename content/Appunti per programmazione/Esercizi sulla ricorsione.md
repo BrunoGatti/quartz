@@ -105,3 +105,53 @@ izio1_dimostrazione.py", line 6, in somma
     somma+=el
 TypeError: unsupported operand type(s) for +=: 'int' and 'list'
 ```
+
+Quindi quello che voglio fare è:
+1. se trovo un numero sommalo
+2. se trovo una lista, trova la somma in quella lista
+
+Come faccio a trovare una somma in quella lista? [[Ricorsione|ricorsione]]
+
+[[#SOLUZIONE esercizio 1|SOLUZIONE]]
+
+## ESERCIZIO 2
+
+Trova il massimo di una lista, con liste annidate (usando la ricorsione)
+
+```python
+def massimo_ricorsivo(lista):
+	massimo=0
+	for elemento in lista:
+		if type(elemento)==int:
+			if elemento>massimo: massimo=elemento
+		elif type(elemento)==list:			
+			massimo_della_sottolista = massimo_ricorsivo(elemento)
+			if massimo_della_sottolista > massimo: massimo=massimo_della_sottolista
+	return massimo
+
+l=[1,2,3,[1,2,10],[1,6,2,[1,6,99]],[101],[32,41,22]]
+
+print(massimo_ricorsivo(l))
+```
+
+
+## ESERCZIO 3
+
+data una lista, anche annidata, waldo.
+
+```python
+#looking for waldo
+
+#in una lista c'è un intruso: waldo, scrivi un programma che trovi waldo anche quando la lista è un macello
+
+def trova_waldo(lista):
+	trovato=False
+	for elemento in lista:
+		if elemento=="waldo": return True
+		elif type(elemento)==list:
+			if(trova_waldo(elemento)==True): return True
+	return trovato
+
+print(trova_waldo([1,2,3,[1,2,3,4],[1,5,4,2,[1,2,"waldo"],4,3,2]]))
+
+```
