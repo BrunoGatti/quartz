@@ -72,3 +72,23 @@ Si
 ## Merge Sort: il passo ricorsivo
 
 Quindi l'idea è questa, se io riuscissi, invece che prendere brutalmente tutta la lista e ordinarla come farebbe un uomo delle caverne (cioè usando bubble sort), **a dividere la mia lista in tante sottoliste già ordinate**, quello che dovrei fare sarebbe solo metterle insieme! che è molto più veloce che ordinarle [[Merge sort#Merge mettere insieme due liste già ordinate è semplice|(l'abbiamo visto prima, nel caso non l'avessi letto)|]]!
+
+Quindi, in pratica. Se voglio ordinare una lista, prima, devo aver ordinato, le due metà della lista. Poi le metto insieme.
+
+```python
+def merge_sort(lista):
+	if len(lista)>1:#fino a che non posso più spezzare la lista
+		merge_sort(meta_lista_di_sinistra)
+		merge_sort(meta_lista_di_destra)
+		merge(meta_lista_di_sinistra, meta_lista_di_destra)
+```
+
+Ora si ragiona! Questa funzione si chiama [[Ricorsione|ricorsivamente]] sulla lista, sostanzialmente dividendola a metà, e a metà, e a metà.... Fino a che non la posso più spezzare a metà (cioè quando ha solo un elemento).
+
+![[Pasted image 20231112235549.png]]
+
+Ma a quel punto quando ho solo un elemento ho una lista ordinata!!
+
+E quindi l'operazione merge SI PUO FARE!
+
+A quel punto il merge verrà chiamato sulle liste da 1
