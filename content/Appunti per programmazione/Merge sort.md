@@ -85,10 +85,71 @@ def merge_sort(lista):
 
 Ora si ragiona! Questa funzione si chiama [[Ricorsione|ricorsivamente]] sulla lista, sostanzialmente dividendola a metà, e a metà, e a metà.... Fino a che non la posso più spezzare a metà (cioè quando ha solo un elemento).
 
-![[Pasted image 20231112235549.png]]
+```python
+lista_da_ordinare=[1,6,2,9,4,3,8,7]
 
-Ma a quel punto quando ho solo un elemento ho una lista ordinata!!
+merge_sort([1,6,2,9,4,3,8,7]):
+	merge_sort([1,6,2,9])
+	merge_sort([4,3,8,7])
 
-E quindi l'operazione merge SI PUO FARE!
+merge_sort([1,6,2,9]):
+	merge_sort([1,6])
+	merge_sort([2,9])
 
-A quel punto il merge verrà chiamato sulle liste da 1
+merge_sort([1,6]):#!!!
+	merge_sort(1)#le ho srotolate fino a che le liste non sono di un elemento
+	merge_sort(6)
+	merge([1],[6])
+
+merge_sort([2,9]):#!!!
+	merge_sort(2)
+	merge_sort(9)
+	merge([2],[9])
+```
+
+Bene, ho toccato il fondo, ho chiamato merge_sort su un singolo elemento... cosa accade?
+A questo punto viene invocato il **merge()**
+
+```python
+merge([1],[9])
+```
+funziona? BEH SI, avevamo detto che merge funziona solo con liste già ordinate... Ma essendo "1" e "6" due liste fatte di un solo elemento, tecnicamente sono ORDINATE!
+
+E quindi funziona! Siccome funziona per 1 e 6 funzionerà anche per 2 e 9
+A questo punto verra chiamato:
+
+```python
+merge([1,6],[2,9])
+```
+Che a sua volta funzionerà! Perchè [1,6] e [2,9] sono due liste ordinate!
+
+Fino a che non si risalirà all'ultima divisione, e la lista sarà completamente ordinata.
+
+
+![[merge-sort.gif]]
+
+## Quanto ce mette?
+
+È chiaro che a noi interessa quanto impiega questo algoritmo.
+[[Merge sort#Merge mettere insieme due liste già ordinate è semplice|Abbiamo già detto]] che merge, per due liste da tre elementi, impiega 6 passi.
+Quindi per fare il merge delle due metà di una lista di lunghezza n, impiegherà n.
+È anche vero, però, che non tutti i merge sono uguali... fare il merge della lista intera (al passo finale) impiega molto di più che fare il merge di due piccoli elementi... È anche vero però che di "piccole liste" ce ne sono molte di più, mentre della lista grande ce n'è solo una.
+
+![[Pasted image 20231113002438.png]]
+
+In fin dei conti, se si guarda bene il disegno ad albero sopra, ci si convince che per ogni "livello" il merge si occupa di unire "n" elementi.
+Quindi sostanzialmente, il tempo totale sarà:
+
+$$
+T(totale) = T(merge) * numeroDiLivelli
+T(merge)=O(n)
+$$
+### quanti sono i livelli?
+
+I livelli sono tanti quante le volte che posso dividere n per due cioè...  $log_2(n)$ 
+
+e quindi:
+
+$$
+ T(totale) = T(merge ) * numero Livelli = O(n) * log_2(n) = O(n * log(n)) 
+$$
