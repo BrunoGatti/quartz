@@ -128,7 +128,7 @@ Fino a che non si risalirà all'ultima divisione, e la lista sarà completamente
 
 ![[merge-sort.gif]]
 
-## Quanto ce mette?
+## Quanto ci mette?
 
 È chiaro che a noi interessa quanto impiega questo algoritmo.
 [[Merge sort#Merge mettere insieme due liste già ordinate è semplice|Abbiamo già detto]] che merge, per due liste da tre elementi, impiega 6 passi.
@@ -142,11 +142,13 @@ Quindi sostanzialmente, il tempo totale sarà:
 
 $$
 T(totale) = T(merge) * numeroDiLivelli
+$$
+$$
 T(merge)=O(n)
 $$
 ### quanti sono i livelli?
 
-I livelli sono tanti quante le volte che posso dividere n per due cioè...  $log_2(n)$ 
+I livelli sono tanti quante le volte che posso dividere n per 2 cioè...  $log_2(n)$ 
 
 e quindi:
 
