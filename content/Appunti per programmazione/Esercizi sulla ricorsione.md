@@ -136,8 +136,10 @@ print(massimo_ricorsivo(l))
 
 
 ## ESERCZIO 3
-
-data una lista, anche annidata, waldo.
+```python
+lista=[1,2,3,[1,2,3,4],[1,5,4,2,[1,2,"waldo"],4,3,2]]
+```
+data una lista, anche annidata, trova waldo.
 
 ```python
 #looking for waldo
