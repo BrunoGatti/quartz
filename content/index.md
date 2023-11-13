@@ -13,6 +13,7 @@ Scimmia antropomorfa, dottore in informatica, studente, tutor e maledetto Nerd, 
 
 #### ⚖️ Ad un [[Sistema di voto|sistema di voto]] che opera su infrastruttura decentralizzata (Ethereum Blockchain):
 - [Qui](https://github.com/BrunoGatti/hardhat_voting_project) Il progetto su github.
+- [[Sistema di voto|Qui]] la documentazione.
 
 #### 🤖 Ad un' AI che utilizza un [modello di linguaggio sviluppato da Microsoft](https://arxiv.org/abs/2306.14824) per rispondere a domande su ambienti domestici.
 
