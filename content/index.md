@@ -2,6 +2,7 @@
 title: Bruno Gatti's Website
 ---
 ## WHOAMI
+
 Scimmia antropomorfa, dottore in informatica, studente, tutor e maledetto Nerd, presso l' [Università degli Studi Roma Tor Vergata](https://web.uniroma2.it/)
 ![](IMG_6849.jpg)
 ## A Cosa sto lavorando ultimamente
