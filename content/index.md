@@ -11,7 +11,8 @@ Ad un tutoraggio per [il corso di programmazione tenuto dal professor Rossi](htt
 2. [Esercizi del corso di tutoraggio](https://github.com/BrunoGatti/eserciziProgrammazione)
 3. appunti vari su argomenti delle lezioni: [[Appunti per programmazione index]] 
 
-Ad un [sistema di voto](https://github.com/BrunoGatti/hardhat_voting_project) che opera su infrastruttura decentralizzata (Ethereum Blockchain)
+Ad un [[Sistema di voto|sistema di voto]] che opera su infrastruttura decentralizzata (Ethereum Blockchain):
+- [Qui](https://github.com/BrunoGatti/hardhat_voting_projectc'è (o ci sarà) Il progetto su github.
 
 Ad un agente che utilizza un [modello di linguaggio sviluppato da Microsoft](https://arxiv.org/abs/2306.14824) per rispondere a domande su ambienti domestici.
 
