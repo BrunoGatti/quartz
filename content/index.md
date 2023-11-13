@@ -3,7 +3,7 @@ title: Bruno Gatti's Website
 ---
 ## WHOAMI [📷](https://www.instagram.com/bruno.gatt)
 
-Scimmia antropomorfa, dottore in informatica, studente, tutor e maledetto Nerd, presso l' [Università degli Studi Roma Tor Vergata](https://web.uniroma2.it/)
+Scimmia antropomorfa, dottore in informatica e studente presso l' [Università degli Studi Roma Tor Vergata](https://web.uniroma2.it/)
 ## 💾 A Cosa sto lavorando ultimamente:
 
 #### 💻 Ad un tutoraggio per [il corso di programmazione tenuto dal professor Rossi](http://www.informatica.uniroma2.it/f0?fid=220&srv=0&os=0&id=PR):
