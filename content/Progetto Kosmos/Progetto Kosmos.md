@@ -80,3 +80,26 @@ Output (entities)=\[('A snowman', (0, 3), \[(0.578125, 0.296875, 0.734375, 0.515
 Date queste informazioni l'ideale sarebbe avere un dataset composto da immagine ed una lista di tuple da due elementi \[("nome entità", \[coordinate del bounding box])]
 
 In modo tale da poter confrontare l'overlapping index facilmente
+
+## Diagramma di flusso elaborazione del dataset
+
+```mermaid
+graph TD
+
+id1("IMMAGINE, [nome_entità,coordinate_boundingbox]")
+id2("&lt;grounding&gt; nome_entità  &lt;/grounding&gt; ")
+id3("Kosmos2")
+id4("[(nome entità, coordinate_kosmos, [(0.578125, 0.296875, 0.734375, 0.515625)])] ")
+id5("[(nome entità,[(0.578125, 0.296875, 0.734375, 0.515625)])] ")
+
+id1 --> id2 
+id2 --> id3
+id3 --> id4
+id4 --> id5
+
+id1 -->|"confronto con overlapping index"| id5
+```
+
+
+
+
