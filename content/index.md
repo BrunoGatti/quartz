@@ -15,7 +15,8 @@ Scimmia antropomorfa, dottore in informatica e studente presso l' [Università d
 - [Qui](https://github.com/BrunoGatti/hardhat_voting_project) Il progetto su github.
 - [[Sistema di voto|Qui]] la documentazione.
 
-#### 🤖 Ad un' AI che utilizza un [modello di linguaggio sviluppato da Microsoft](https://arxiv.org/abs/2306.14824) per rispondere a domande su ambienti domestici.
+#### 🤖 Ad un' AI che utilizza un [modello di linguaggio sviluppato da Microsoft](https://arxiv.org/abs/2306.14824) per rispondere a domande su ambienti domestici:
+- Qui alcuni [[Progetto Kosmos|appunti]] su kosmos e su come funziona
 
 
 
