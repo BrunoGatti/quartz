@@ -21,7 +21,7 @@ ProcThor è un framework per la generazione procedurale di ambienti domestici, e
 In questo modo possiamo testare l'approccio dei modelli di linguaggio su ambienti visivi realistici.
 Ovviamente manca ancora il modello.
 ## L'approccio multimodale: [[Kosmos 2]]
-A questo punto, se al problema di grounding si aggiunge la modalità visiva sotto forma di immagini, abbiamo bisogno di un modello che la gestisca: [[un modello di linguaggio multimodale]]
+A questo punto, se al problema di grounding si aggiunge la modalità visiva sotto forma di immagini, abbiamo bisogno di un modello che la gestisca: [[Modello di linguaggio multimodale]]
 
 Ricapitolando, quindi, quello di cui abbiamo bisogno è di un modello di linguaggio, che operi su immagini (multimodale) e che sia in grado di fare il grounding delle entità presenti nel testo con le entità presenti nell'immagine.
 

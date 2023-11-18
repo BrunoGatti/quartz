@@ -16,7 +16,7 @@ Scimmia antropomorfa, dottore in informatica e studente presso l' [Università d
 - [[Sistema di voto|Qui]] la documentazione.
 
 #### 🤖 Ad un' AI che utilizza un [modello di linguaggio sviluppato da Microsoft](https://arxiv.org/abs/2306.14824) per rispondere a domande su ambienti domestici:
-- Qui alcuni [[Creazione Dataset|appunti]] su kosmos e su come funziona
+- Qui alcuni [[Progetto Kosmos indice|appunti]] su kosmos e su come funziona
 
 
 
