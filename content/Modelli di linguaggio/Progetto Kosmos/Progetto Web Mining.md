@@ -8,7 +8,8 @@ Idealmente vorremmo che un agente sia in grado di spostarsi all'interno di un am
 2. comprendere il comando inviato
 3. legare il comando con oggetti realmente esistenti nell'ambiente (grounding)
 
-Tra gli approcci a questo problema segnalo [GrUT](http://sag.art.uniroma2.it/NL4AI/wp-content/uploads/2022/11/paper5.pdf), in GrUT viene utilizzata un'architettura basata su transformers per fare il grounding nell' interazione uomo macchina.
+Tra gli approcci a questo problema segnalo [GrUT](http://sag.art.uniroma2.it/NL4AI/wp-content/uploads/2022/11/paper5.pdf). 
+In GrUT viene utilizzata un'architettura basata su transformers per fare il grounding nell' interazione uomo macchina.
 In questo paper viene utilizzata una rappresentazione solo testuale del mondo. Idealmente, sarebbe utile introdurre una rappresentazione del mondo più vicina alla realtà, come un ad esempio un feedback visivo (un'immagine).
 
 Idealmente, vorremmo creare un ambiente osservabile che l'agente sia in grado di esplorare e con cui possa interagire. 
