@@ -9,7 +9,7 @@ output =~True/False
 $$
 #### Labeled Image:
 ![[Pasted image 20231122165658.png]]
-in questo file è contenuta, sottoforma di xml, il labeling di un'immagine, a cui è stato associato il bounding box per una televisione.
+in questo file è contenuta, sotto forma di xml, il labeling di un'immagine, a cui è stato associato il bounding box per una televisione.
 
 #### Image:
 ![[Pasted image 20231122165842.png]]
