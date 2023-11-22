@@ -5,3 +5,4 @@ Di seguito troverete un indice esaustivo degli argomenti trattati nel progetto:
 - [[Progetto Web Mining]]
 - [[Kosmos 2]]
 - [[Creazione Dataset]]
+- [[evaluation]]
