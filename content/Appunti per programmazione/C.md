@@ -1,4 +1,4 @@
-C è un linguaggio diverso dal python: la prima differenza più evidente è che il c è un linguaggio compilato, mentre python no. Cosa significa nel pratico:
+C è un linguaggio diverso dal python: la prima differenza più evidente è che il "C" è un linguaggio compilato, mentre python no. Cosa significa nel pratico:
 
 Se in python faccio un programma di questo tipo:
 
@@ -65,7 +65,10 @@ La "~" indica che sei nella "home"
 lanciare il comando "ls" ti farà vedere quali file e cartelle ci sono nella cartella (directory) in cui sei ora (che ricordiamo essere la "Home")
 in Blu ho le cartelle, in bianco i file, in viola Google Drive (perchè è viola non lo so francamente)
 Il mio file sta in una cartella chiamata "la_mia_cartella" che a sua volta sta in una cartella chiamata "c_per_australopitechi" che a sua volta si trova sulla scrivania (Desktop).
-Il path completo è "~/Desktop/c_per_australopitechi/la_mia_cartella"
+Il path completo è:
+```bash
+"~/Desktop/c_per_australopitechi/la_mia_cartella"
+```
 Per andarci posso lanciare il comando "cd" che mi fa cambiare directory (CD="change directory")
 ![[Pasted image 20231121195427.png]]
 Come potete vedere, adesso mi trovo nella cartella "la_mia_cartella", ci dovrebbe quindi essere il mio file:
