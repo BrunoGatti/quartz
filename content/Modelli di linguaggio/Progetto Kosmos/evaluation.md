@@ -32,44 +32,27 @@ labeled_entities = extract_entities_from_xml(labeled_image_path)
 ```python
 def extract_entities_from_xml(xml_file):
 	
-	entities = []
-	
-	tree = ET.parse(xml_file)
-	
-	root = tree.getroot()
-	
-	  
+	entities = []	
+	tree = ET.parse(xml_file)	
+	root = tree.getroot()	  
 	
 	object_elements = root.findall(".//object")
 	
 	for object_element in object_elements:
-	
 		entity_name = object_element.find("name").text
-		
 		xmin = float(object_element.find("bndbox/xmin").text)
-		
 		ymin = float(object_element.find("bndbox/ymin").text)
-		
 		xmax = float(object_element.find("bndbox/xmax").text)
-		
 		ymax = float(object_element.find("bndbox/ymax").text)
-		
-		  
 	
 	# Normalize coordinates
 	
 	xmin_normalized = xmin / image_width
-	
 	ymin_normalized = ymin / image_height
-	
 	xmax_normalized = xmax / image_width
-	
 	ymax_normalized = ymax / image_height
 	
-	  
-	
 	entities.append((entity_name, (xmin_normalized, ymin_normalized, xmax_normalized, ymax_normalized)))
-	
 	  
 
 return entities
@@ -99,40 +82,21 @@ questa la funzione "extract_entities_from_xml":
 def extract_entities_from_xml(xml_file):
 
 	entities = []
-	
 	tree = ET.parse(xml_file)
-	
 	root = tree.getroot()
 	
-	  
-	
 	object_elements = root.findall(".//object")
-	
 	for object_element in object_elements:
-		
 		entity_name = object_element.find("name").text
-		
 		xmin = float(object_element.find("bndbox/xmin").text)
-		
 		ymin = float(object_element.find("bndbox/ymin").text)
-		
 		xmax = float(object_element.find("bndbox/xmax").text)
-		
 		ymax = float(object_element.find("bndbox/ymax").text)
-	
-	  
-	
 	# Normalize coordinates
-	
 	xmin_normalized = xmin / image_width
-	
 	ymin_normalized = ymin / image_height
-	
 	xmax_normalized = xmax / image_width
-	
 	ymax_normalized = ymax / image_height
-	
-	  
 	
 	entities.append((entity_name, (xmin_normalized, ymin_normalized, xmax_normalized, ymax_normalized)))
 
@@ -162,37 +126,20 @@ print(kosmos_entities)
 questo il codice nella funzione "process_image_with_kosmos":
 ```python
 def process_image_with_kosmos(prompt, image_path):
-
-  
 	
 	image = Image.open(image_path)
-	
 	inputs = processor(text=prompt, images=image, return_tensors="pt")
 	
-	  
-	  
-	
 	generated_ids = model.generate(
-		
 		pixel_values=inputs["pixel_values"],
-		
 		input_ids=inputs["input_ids"][:, :-1],
-		
 		attention_mask=inputs["attention_mask"][:, :-1],
-		
 		img_features=None,
-		
 		img_attn_mask=inputs["img_attn_mask"][:, :-1],
-		
 		use_cache=True,
-		
 		max_new_tokens=64,
-	
 	)
-	
-	generated_text = processor.batch_decode(generated_ids, skip_special_tokens=True)[0]
-	
-	  
+	generated_text = processor.batch_decode(generated_ids, skip_special_tokens=True)[0] 
 	
 	processed_text, kosmos_entities = processor.post_process_generation(generated_text)
 	
