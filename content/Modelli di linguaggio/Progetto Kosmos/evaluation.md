@@ -1,7 +1,7 @@
 l'evaluation viene fatta grazie ad un algoritmo che confronta l'entità trovata da kosmos (con il suo relativo bounding box) con l'immagine labeled
 
 $$
-input=~IMAGE.png~,~LABELED\__~IMAGE.xml)
+input=~IMAGE.png~,~LABELED\__~IMAGE.xml
 $$
 
 $$

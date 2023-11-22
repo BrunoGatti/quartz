@@ -103,3 +103,4 @@ id1 -->|"confronto con overlapping index"| id5
 
 
 
+## Prossimo passo: [[evaluation|evaluation]]
