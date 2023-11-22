@@ -16,7 +16,7 @@ in questo file è contenuta, sotto forma di xml, il labeling di un'immagine, a c
 questa invece è l'immagine originale.
 
 ## L'algoritmo
-L'algoritmo prende in input queste due cose e ci dice se kosmos è in grado di generare un bonding box (in questo caso per l'entità "television") accettabile. Per il codice completo (del main) si rimanda [[evaluation#codice del main completo|qui]]
+L'algoritmo prende in input queste due cose e ci dice se [[Kosmos 2]] è in grado di generare un bonding box (in questo caso per l'entità "television") accettabile. Per il codice completo (del main) si rimanda [[evaluation#codice del main completo|qui]]
 ### passo 1: estrazione delle entità
 in questo passo viene preso il file xml e viene estratta l'entità a cui dobbiamo fare riferimento (le entità in caso siano più di una).
 
