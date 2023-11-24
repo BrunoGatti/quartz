@@ -153,4 +153,67 @@ Perché il povero "n" non conta niente se paragonato ad n alla seconda! Esattame
 $$T(programma)=O(n^2+n)=O(n^2)$$
 ## E theta????
 
-Si ok, mo lo scrivo
+Si ok, ma theta chi è?
+Possiamo vedere O(n) O(n^2) come questi due insiemi.
+![[Pasted image 20231123201320.png]]
+tutte le funzioni che appartengono a $O(n)$ appartengono anche a $O(n^2)$.
+Cioè $O(n)$ è un sottoinsieme di $O(n^2)$, questo perché "o grande" è un limite superiore: cioè sono tutte le funzioni che ci mettono "al più $n^2$". Questo significa che tutte le funzioni che ci mettono $n$ sono un sottoinsieme di quelle che ci mettono $n^2$.
+
+Cioè: le funzioni che ci mettono $O(n^2)$ potrebbero anche, in casi particolari metterci un po' di meno. Per esempio, prendiamo un programma che trova se due parole sono anagrammi.
+
+```python
+stringa1="cane"
+stringa2="enac"
+
+if len(stringa1)!=len(stringa2)#!!!!!
+
+for i in stringa1:
+	occorrenze_i=occorrenze(i,stringa1)
+	for j in stringa2:
+		istruzione1
+		istruzione2
+```
+
+in questo caso ci sono due cicli for uno dentro l'altro, ma non **è detto che li svolga sempre!! Potrebbe anche metterci di meno il programma!** questo perché ho aggiunto una verifica all'inizio del programma, prima di iniziare verifico che le due stringhe siano della stessa lunghezza. Perché se fossero di lunghezza differente sarebbe inutile verificare che siano anagrammi no???
+
+Quindi ok, il programma è $O(n^2)$ ma potrebbe anche metterci di meno!!!
+#### Si ok, ma chi è $\Theta$?
+$\Theta(n^2)$ sono tutti i programmi che ci mettono **ESATTAMENTE** $n^2$ istruzioni, e che non accade MAI che ci mettano di meno.
+Il programma di prima, quindi:
+
+```python
+stringa1="cane"
+stringa2="enac"
+
+if len(stringa1)!=len(stringa2)#!!!!!
+
+for i in stringa1:
+	occorrenze_i=occorrenze(i,stringa1)
+	for j in stringa2:
+		istruzione1
+		istruzione2
+```
+siccome è possibile che ci metta meno tempo di $O(n^2)$, visto che se le due stringhe hanno lunghezza differente non esegue i due cicli for, **allora non fa poarte di $\Theta(n^2)$** ma solo di $O(n^2).
+
+Se invece gli avessi tolto la condizione iniziale:
+```python
+stringa1="cane"
+stringa2="enac"
+
+for i in stringa1:
+	occorrenze_i=occorrenze(i,stringa1)
+	for j in stringa2:
+		istruzione1
+		istruzione2
+```
+in questo caso non c'è più la condizione che permetterebbe al programma di interrompersi prima di fare i due cicli for. Quindi questo programma ci metterà SEMPRE ESATTAMENTE $n^2$ istruzioni, quindi:
+$$T(programma)=\Theta(n^2)$$
+Se ci piace vederlo da un punto di vista di insiemi $\Theta(n^2)$ è la regione compresa tra $O(n^2)$ e $O(n)$.
+
+![[Pasted image 20231124105423.png]]
+Cioè quella che ho evidenziato di rosso.
+
+## Ricapitolando
+1. La complessità temporale sono il numero di istruzioni che fa il nostro programma.
+2. Se il numero istruzioni che fa il nostro programma dipende da cosa inserisce l'utente, allora non sappiamo quante istruzioni farà il nostro programma -> il tempo del nostro programma dipende dall'input $n$.
+3. I programmi possono impiegare "al massimo" $n$ istruzioni, e quindi fanno parte di $O(n)$ oppure, **esattamente** $n$ istruzioni, in quel caso fanno parte di $\Theta(n)$
