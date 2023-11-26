@@ -17,6 +17,13 @@ wsl --install
 
 Queste installerà Ubuntu (una delle tante distribuzioni di Linux) sul vostro computer.
 
+### Poi
+una volta finito di installare, proprio come qualsiasi sistema nuovo che installate vi chiederà
+1. Nome utente
+2. Password (nuova)
+una volta che glieli avete dati, aspettate un attimo e poi vi uscirà una linea di comando tipo questa
+
+![[Pasted image 20231126110534.png]]
 ### Usare la linea di comando di Linux con VSCode:
 Siccome molti di voi utilizzano VSCode (per non dire tutti), vi faccio pure vedere un metodo per aprire il terminale dentro VSCode.
 
