@@ -8,3 +8,6 @@ Programmare non è solo "schiaccio il bottone e vedo che esce", anche solo il fa
 ## 3: se non fai cose complicate non imparerai mai cose complicate
 e rimarrai uno smanettone.
 Noi siamo Informatici, e vogliamo capire come funzionano le cose, non vogliamo solo che funzionino e basta.
+
+## Per chi volesse programmare come un uomo delle caverne, ma non vuole rinunciare a Windows:
+Se vuoi programmare come un uomo delle caverne, ma non vuoi rinunciare a Windows, perchè non sia mai che imparo qualcosa di nuovo all'università, allora vi consiglio [[WSL]], che sostanzialmente vi permette di lanciare comandi Unix based (identici a quelli che lancerestse su Linux) ma su Windows.
