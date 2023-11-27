@@ -2,7 +2,6 @@ Questa è la documentazione relativa al progetto d'esame del corso di [Web Minin
 Di seguito troverete un indice esaustivo degli argomenti trattati nel progetto:
 
 ## Indice
-- [[Progetto Web Mining]]
-- [[Kosmos 2]]
-- [[Creazione Dataset]]
-- [[evaluation]]
+- [[Progetto Web Mining|introduzione al progetto]]
+- [[Kosmos 2|descrizione dettagliata del modello "kosmos2"]]
+- [[evaluation|Una descrizione di come verrà effettuate l'evaluation del modello]]
