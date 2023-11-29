@@ -5,4 +5,4 @@
 4. [[C]]
 5. [[Qualche ragione per programmare come un uomo delle caverne]]
 6. [[Complessità computazionale]]
-7. [[esercizi su printf|ESERCIZI per c]]
+7. [[ESERCIZI IN C|ESERCIZI per c]]
