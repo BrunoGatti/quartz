@@ -49,6 +49,7 @@ Per farlo si chiama la printf, e si scrive tra virgolette quello che si vuole st
 ## Esercizio 3
 fai un programma che stampa il valore di 2 variabili
 ```C
+#include<stdio.h>
 int main(){
 	int x=3;
 	int y=5;
@@ -57,3 +58,6 @@ int main(){
 }
 ```
 In questo caso ci sono due placeholder, printf li prende uno alla volta dalle variabili specificate dopo la virgola (in questo caso, prima x e poi y).
+
+## Prosegui 
+Prosegui con [[esercizi su scanf|scanf]]
