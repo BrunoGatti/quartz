@@ -1,4 +1,4 @@
-Certamente! Le funzioni generatrici di momenti sono strumenti matematici utilizzati nell'ambito della teoria delle probabilità e della statistica per ottenere informazioni sui momenti di una variabile casuale. Esse forniscono un modo conveniente di rappresentare e manipolare i momenti di una distribuzione di probabilità.
+Le funzioni generatrici di momenti sono strumenti matematici utilizzati nell'ambito della teoria delle probabilità e della statistica per ottenere informazioni sui momenti di una variabile casuale. Esse forniscono un modo conveniente di rappresentare e manipolare i momenti di una distribuzione di probabilità.
 
 La funzione generatrice dei momenti di una variabile casuale $X$ è definita come la somma ponderata degli esponenti della variabile elevata a una potenza:
 
