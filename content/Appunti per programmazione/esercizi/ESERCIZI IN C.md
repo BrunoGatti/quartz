@@ -6,3 +6,6 @@ Sotto trovate un indice per gli esercizi divisi in "aree". Gli esercizi hanno un
 
 - stampare qualcosa: [[esercizi su printf]]
 - Prendere in input qualcosa: [[esercizi su scanf]] 
+- IF else e altre bestie selvatiche: [[Control Flow]]
+- array: [[esericizi sugli array]]
+- funzioni:[[esercizi sulle funzioni]]

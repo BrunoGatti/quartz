@@ -1,5 +1,0 @@
-- [[esercizi su printf]]
-- [[esercizi su scanf]]
-- [[Control Flow]]
-- [[esericizi sugli array]]
-- [[esercizi su funzioni]] da fare ancora
