@@ -1,0 +1,1 @@
+Scanf è una dell

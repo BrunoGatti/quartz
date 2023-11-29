@@ -1,3 +1,5 @@
+Se quello che stai cercando sono esercizi, vai [[ESERCIZI IN C|qui]]
+
 C è un linguaggio diverso dal python: la prima differenza più evidente è che il "C" è un linguaggio compilato, mentre python no. Cosa significa nel pratico:
 
 Se in python faccio un programma di questo tipo:
