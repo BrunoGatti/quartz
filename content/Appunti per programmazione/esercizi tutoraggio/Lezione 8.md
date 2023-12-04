@@ -82,6 +82,36 @@ int main(){
 >	printf("%d\n",b[3])
 >}
 
+#### Esercizio 4 easy
+#malloc 
+
+Alloca dinamicamente un array di 4 elementi ed assegnagli i valori che vanno da 1 a 4 con un ciclo for
+
+>[!question]- hint1: allocazione dell'array
+>```C
+>#include <stdio.h>
+>#include <stdlib.h>
+>int main(){
+>	int *a = malloc(sizeof(int)*4);
+>}
+>```
+>alloco dinamicamente un array di quattro elementi interi, per farlo serve la funzione malloc, contenuta nella libreria stdlib.h (ricordatevi di includerla se state usando la malloc). 
+>La malloc prende in input la dimensione in byte da allocare, ovviamente questa è 4 volte la dimensione in byte di un intero (sizeof(int) per 4 volte).
+
+>[!question]- hint2: assegnamento all'array
+>```C
+>#include <stdio.h>
+>#include<stdlib.h>
+>
+>int main(){
+>	int *a=malloc(sizeof(int)*4);
+>	for (int i=0;i < 4;i++){
+>		a[i]=i+1; //assegno ad a il valore i+1 (cioè a[0]=1,a[1]=2,a[2]=3 e a[3]=4)
+>		printf("%d",a[i]);
+>	}
+>}
+>```
+
 ## Medium
 #### Esercizio 1 medium
 #puntatori
@@ -228,3 +258,121 @@ int main(){
 >```
 
 
+## Hard
+
+#### esercizio 1 hard
+#array #puntatori #malloc
+Fai un programma che prende in input dall'utente continuamente un intero fino a quando non riceve in input qualcosa di diverso.
+Ogni intero che viene preso in input dall'utente deve essere inserito in un array.
+Ogni volta che inserisci l'intero stampa l'array.
+
+>[!question]- Hint 1 la funzione che stampa l'array
+>Una parte importante di questo programma è la funzione che stampa l'array, consiglio di cominciare da quella.
+>```C
+>#include <stdio.h>
+>#include <stdlib.h>
+>void stampaArray(int *array, int size){
+>	printf("Array: ");
+>	for (int i=0; i< size; i++){
+>		printf("%d",array[i]);
+>	}
+>	printf("\n");
+>}
+>```
+
+>[!question]- Hint 2 il main: prendere l'intero in input
+>Ovviamente serve un array, visto che non sappiamo quanti interi metterà l'utente è chiaro che non ci basta allocare l'array così
+>```C
+>int a[10];
+>```
+>questo perchè se poi l'utente decide di mettere 11 interi allora il programma si rompe.
+>Quindi come possiamo fare? Semplice: allochiamo dinamicamente l'array (malloc), e quando finisce lo spazio, lo aumentiamo dinamicamente (realloc)
+>```C
+>int main(){
+>	int * array= malloc(10*sizeof(int));
+>	int dimensione_corrente_array=0;
+>	int dimensione_massima_array=10;
+>	printf("inserisci numeri interi. Inserisci un carattere non numerico per uscire.\n");
+>	//...
+>}
+>```
+>Cominciamo con le prime variabili: l'array, su cui alloco 10 elementi, e altre due variabili, una che tiene conto di quanti elementi sono nell'array, e l'altra che tiene conto di quanti ce ne possono entrare al massimo.
+>In pratica quando la dimensione corrente supera la dimensione massima mi tocca riallocare l'array con altro spazio!
+>Infine stampo un prompt per far capire all'utente cosa deve fare.
+>```C
+>while(1){
+>	int input;
+>	printf("inserisci un intero: ");
+>	if (scanf("%d",&input)!=1){
+>		printf("input non valido. Programma finito\n");
+>		break;
+>	}
+>	//...
+>}
+>```
+>Questo loop è infinito (while(1)) chiaramente l'utente può inserire quanti interi vuole, il programma si interrompe nel caso in cui inserisco un non intero, per uscire dal loop sto usando un break. 
+>Con la scanf prendo in input l'intero, e ora che ci faccio?
+>Lo metto in un array!
+
+>[!question]- Hint 3: inserire l'intero nell'array
+>adesso la parte succosa. Non possiamo inserire e basta l'intero nell'array! dobbiamo prima verificare che l'array non sia pieno! se è pieno va aumentata la memoria
+>```C
+>while(1){
+>	//input e tutta la parte vista prima
+>	if(dimensione_corrente_array) == dimensione_massima_array){
+>		dimensione_massima_array += 5;
+>		array = realloc(array, 10*sizeof(int));
+>	}
+>}
+>```
+>fatto questo aggiungiamo l'intero all'array
+>```C
+>//prosegue dalla parte di prima
+>array[dimensione_corrente_array] =input;
+>dimensione_corrente_array++;
+>stampaArray(array, dimensione_corrente_array);
+>```
+>
+
+### soluzione completa da copiare e incollare per zombie da tastiera
+```C
+#include <stdio.h>
+#include <stdlib.h>
+
+void stampaArray(int *array, int size) {
+    printf("Array: ");
+    for (int i = 0; i < size; i++) {
+        printf("%d ", array[i]);
+    }
+    printf("\n");
+}
+
+int main() {
+    int *array = malloc(10 * sizeof(int));
+    int dimensione_corrente_array = 0;
+    int dimensione_massima_array=10;
+
+    printf("Inserisci numeri interi. Inserisci un carattere non numerico per uscire.\n");
+    while (1) {
+        int input;
+        printf("Inserisci un numero intero: ");
+        if (scanf("%d", &input) != 1) {
+            printf("Input non valido. Uscita dal programma.\n");
+            break;
+        }
+        if (dimensione_corrente_array == dimensione_massima_array) {
+            // Rialloca l'array se la dimensione massima è raggiunta
+            dimensione_massima_array += 5;
+            array = realloc(array, 10 * sizeof(int));
+        }
+        // Aggiunge il numero all'array e incrementa la dimensione
+        array[dimensione_corrente_array] = input;
+        dimensione_corrente_array++;
+        // Stampa l'array
+        stampaArray(array, dimensione_corrente_array);
+    }
+    // Libera la memoria allocata dinamicamente
+    free(array);
+    return 0;
+}
+```
