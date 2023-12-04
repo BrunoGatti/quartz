@@ -6,3 +6,6 @@
 5. [[Qualche ragione per programmare come un uomo delle caverne]]
 6. [[Complessità computazionale]]
 7. [[ESERCIZI IN C|ESERCIZI per c]]
+
+## Esercizi delle lezioni di laboratorio del 2023
+1. [[Lezione 8]]
