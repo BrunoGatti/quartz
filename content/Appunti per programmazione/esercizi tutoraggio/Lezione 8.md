@@ -257,6 +257,93 @@ int main(){
 >}
 >```
 
+#### Esercizio 3 medium
+
+Definisci una funzione che prende in input un array di interi, somma tutti i numeri dell'array e alloca un nuovo array composto da tanti "1" quanto è il risultato della somma precedente
+
+ESEMPIO:
+se l'array è
+```C
+a[3]=[2,5,1]
+```
+la sua somma è 8
+Io voglio un array fatto da otto "1"
+```C
+risultato[8]=[1,1,1,1,1,1,1,1]
+```
+
+Parti dal seguente main
+
+```C
+//scrivi qui la funzione array_di_uno
+
+int main(){
+	// definisco gli array
+    int a[3]={1,2,3};
+    int *b=NULL;
+
+	//chiamo la funzione array di uno che dovete programmare voi
+    b=array_di_uno(a,3);
+
+	//stampo l'array di uni
+    printf("Array di uni:[ "); //queste sono solo lì per bellezza
+    for(int i=0;i<sizeof(b)/sizeof(int);i++){
+        printf("%d,",b[i]); //stampa l'i esimo elemento dell'array di uni
+    }
+    printf("]\n"); //queste sono solo lì per bellezza
+}
+```
+
+>[!question]- Hint1
+>siccome non so a priori quanto grosso dovrà essere l'array me lo devo creare dinamicamente
+
+>[!question]- Hint 2
+>La funzione che voglio prende in input un array, la sua dimensione, e mi restituisce in output un nuovo array fatto di "uni"
+>```C
+>int * array_di_uno(int * array, int dimensione_array){
+>	//calcola la somma degli elementi dell'array in input
+>	//alloca dinamicamente l'array
+>	//assegna uno a tutto l'array
+>}
+>```
+
+##### Soluzione 
+```C
+#include <stdio.h>
+#include <stdlib.h>
+
+int * array_di_uno(int* array, int dimensione_array){
+    int somma=0;
+    int * uni;
+    for (int i=0;i< dimensione_array;i++){
+        somma+=array[i];
+    }
+    //a questo punto somma contiene il valore di tutti gli elementi dell'array sommati, nel nostro esempio era 8
+
+    //adesso voglio fare un array nuovo di 8 uni
+    uni= malloc(sizeof(int)*somma);
+
+    //una volta allocato l'array lo riempio di uni
+    for (int i=0;i<dimensione_array;i++){
+        uni[i]=1;
+    }
+    return uni;
+}
+
+int main(){
+    int a[3]={1,2,3};
+    int *b=NULL;
+    b=array_di_uno(a,3);
+    printf("Array di uni:[ ");
+
+    for(int i=0;i<sizeof(b)/sizeof(int);i++){
+        printf("%d,",b[i]);
+    }
+
+    printf("]\n");
+}
+```
+
 
 ## Hard
 
