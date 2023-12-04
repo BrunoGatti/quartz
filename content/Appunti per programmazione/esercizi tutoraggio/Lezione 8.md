@@ -143,13 +143,7 @@ Alloca dinamicamente un array di 4 elementi ed assegnagli i valori che vanno da 
 >}
 >```
 
->[!question]- Fai una funzione che prende in input un punto, ad esempio p2 e lo stampa così: "(1,7)"
->```C
->void stampa_punto(struct punto p){
->	printf("(%d,%d)",p.x,p.y);
->}
->```
-
+Continua questo esercizio: da adesso in poi si alza la difficoltà: continua [[Lezione 8#esercizio 4 medium]]
 
 ## Medium
 #### Esercizio 1 medium
@@ -380,6 +374,69 @@ int main(){
     }
 
     printf("]\n");
+}
+```
+
+#### Esercizio 4 medium
+
+Questa è la continuazione dell'[[Lezione 8#Esercizio 5 easy|esercizio 5 easy]] Se non hai fatto quello, fallo prima di fare questo
+
+
+>[!question]- Fai una funzione che prende in input un punto, ad esempio p2 e lo stampa così: "(1,7)"
+>```C
+>void stampa_punto(struct punto p){
+>	printf("(%d,%d)",p.x,p.y);
+>}
+>```
+<
+
+>[!question]- Fai una funzione che presi due punti calcola il punto medio dati due punti
+>```C
+>struct punto punto_medio(struct punto p1, struct punto p2){
+>	struct punto punto_medio;
+>	punto_medio.x = (p1.x+p2.x)/2;
+>	punto_medio.y = (p1.y+p2.y)/2;
+>	return punto_medio;
+>}
+>```
+>Questa funzione a dirla tutta ha un difetto, sapresti dire quale, sapresti renderla migiore??
+
+>[!question]- rendi migliore la funzione data come soluzione alla domanda prima
+
+##### Soluzione completa
+
+```C
+#include <stdio.h>
+#include <stdlib.h>
+
+struct punto{
+
+    int x;
+    int y;
+};
+
+struct punto punto_medio(struct punto p1, struct punto p2){
+    struct punto punto_medio;
+    punto_medio.x=(p1.x+p2.x)/2;
+    punto_medio.y=(p1.y+p2.y)/2;
+    return punto_medio;
+}
+
+void stampa_punto(struct punto p){
+    printf("(%d,%d)",p.x,p.y);
+}
+
+int main(){
+    struct punto p1;
+    struct punto p2;
+
+    p1.x=1;
+    p1.y=2;
+
+    p2.x=1;
+    p2.y=8;
+
+    stampa_punto(punto_medio(p1,p2));
 }
 ```
 
