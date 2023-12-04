@@ -112,6 +112,45 @@ Alloca dinamicamente un array di 4 elementi ed assegnagli i valori che vanno da 
 >}
 >```
 
+#### Esercizio 5 easy
+#struct
+
+>[!question]- fai una struct che rappresenti un punto
+>```C
+>struct punto{
+>	int x;
+>	int y;
+>};
+>```
+>ovviamente come sappiamo un punto è fatto da una coordinata x e una y.
+>ricordatevi di mettere il ; alla fine della graffa dopo la struct
+
+>[!question]- nel main dichiara due punti: (1,2) e (1,7)
+>```C
+>struct punto{
+>	int x;
+>	int y;
+>};
+>int main(){
+>	struct punto p1;
+>	struct punto p2;
+>	
+>	p1.x=1;
+>	p1.y=2;
+>	
+>	p2.x=1;
+>	p2.y=7;
+>}
+>```
+
+>[!question]- Fai una funzione che prende in input un punto, ad esempio p2 e lo stampa così: "(1,7)"
+>```C
+>void stampa_punto(struct punto p){
+>	printf("(%d,%d)",p.x,p.y);
+>}
+>```
+
+
 ## Medium
 #### Esercizio 1 medium
 #puntatori
