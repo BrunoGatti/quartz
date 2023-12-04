@@ -102,8 +102,6 @@ int main(){
 Definisci la funzione "aumenta". SENZA MODIFICARE LE ALTRE PARTI DEL MAIN (IN PARTICOLARE LA PRINT).
 "aumenta" prende in input un numero float e un intero, e aumenta il primo numero di tanto quanto specificato dall'intero. In questo caso, quindi dovrebbe aumentare il valore di "pi" di 1.
 
-#### esercizio 2 medium
-#array
 
 >[!question]- Hint 1
 >
@@ -156,3 +154,77 @@ Definisci la funzione "aumenta". SENZA MODIFICARE LE ALTRE PARTI DEL MAIN (IN PA
 
 
 #### Esercizio 2 medium
+#array 
+
+dato questo programma 
+
+```C
+#icnlude <stdio.h>
+
+int main(){
+	int a[3]={1,2,3};
+	int *b=a;
+	printf("%d",b);
+	
+	printf("%d",b+2);
+}
+```
+La prima printf stampa l'indirizzo di memoria di b. Se non siete convinti di questo andatevi a vedere gli esercizi easy sugli array.
+Nel mio caso stampa l'indirizzo di memoria "1803711096"
+
+Ma cosa stampa la seconda printf?
+- l'indirizzo di memoria di b più 2 (es:  "1803711098")
+- l'indirizzo di memoria di b più 2 x sizeof(int) 
+
+>[!question]- Ma cosa stampa la seconda printf?
+>Ovviamente la seconda, C, che è molto intelligente, capisce che b è un puntatore ad intero, e quindi quando va a sommare un numero all'indirizzo di memoria, sa già che deve moltiplicarlo per la size del tipo dell'elemento dell'array.
+>Questo è anche il motivo per cui non possiamo mettere tipi diversi nell'array. Altrimenti il compilatore non saprebbe che fare in casi come questo se il tipo non fosse deciso a priopri
+
+Ora che questa cosa è chiarita possiamo passare al vero esercizio.
+
+Dato questo scheletro di programma, fai un ciclo for che stampa il contenuto di a, senza usare a, e SENZA USARE LE PARENTESI QUADRE. 
+```C
+#icnlude <stdio.h>
+
+int main(){
+	int a[3]={1,2,3};
+	int *b=a;
+}
+```
+
+>[!question]- Hint 1
+> ovviamente dobbiamo fare un ciclo for per scorrere tutto l'array, se non posso usare a, posso usare un puntatore agli elementi di a, cioè b.
+> ```C
+> #include <stdio.h>
+> int main(){
+> 	int a[3]={1,2,3};
+> 	int *b=a;
+> 	for (int i=0;i<3;i++){
+> 		printf()// cosa devo stampare
+> 	}
+> }
+> ```
+
+>[!question]- Hint 2
+>Nella printf devo chiamare ad ogni iterazione di i, l'i-esimo elemento puntato da b.
+>Per scrivere l'i-esimo elemento puntato da b, si scrive:
+>```C
+>printf("%d",b+i);
+>```
+>ma non basta stampare questo! perchè questo non stampa il VALORE dell'i-esimo elemento puntato da b, bensì stampa l'INDIRIZZO DI MEMORIA dell'i-esimo elemento puntato da b!
+>Se solo ci fosse un modo per stampare il valore contenuto da un indirizzo di memoria....
+
+>[!question]- Soluzione per australopitechi
+>ovviamente il modo per stampare il valore contenuto da un certo indirizzo di memoria è l'operatore di deferenziazione (la stellina *). Quindi
+>```C
+>#include <stdio.h>
+>int main(){
+>	int a[3]={1,2,3};
+>	int *b=a;
+>	for (int i=0;i<3;i++){
+>		printf("%d\n",*(b+i));
+>	}
+>}
+>```
+
+
