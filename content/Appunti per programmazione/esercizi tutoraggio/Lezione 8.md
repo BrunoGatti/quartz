@@ -20,6 +20,9 @@ int main(){
 > 	printf(" indirizzo: %d, valore: %d",&x,x);
 > }
 > ```
+> per stampare l'indirizzo di memoria di una variabile, basta chiamare "&x", che sostanzialmente mi tira fuori l'indirizzo di memoria di x. Invece per stampare il contenuto di x basta stampare x (come abbiamo sempre fatto).
+>Se non hai capito nulla forse è il caso di studiare un po' di roba sui puntatori [[puntatori| qui]]
+>
 
 
 #### Esercizio 2 easy
@@ -42,6 +45,7 @@ int main(){
 >	printf("indirizzo: %d, valore %d", y, *y);
 >}
 >```
+>essendo un puntatore, se stampo "y" mi stamperà l'indirizzo di memoria della variabile puntata da y (in questo caso x). Invece se lo "deferenzio" usando l'operatore "*" quello che accade è che invece di farmi vedere l'indirizzo di memoria di x, mi fa vedere il valore contenuto nell'indirizzo di memoria di x, quindi 3.
 
 #### Esercizio 3 easy
 #array
@@ -87,7 +91,7 @@ int main(){
 
 Alloca dinamicamente un array di 4 elementi ed assegnagli i valori che vanno da 1 a 4 con un ciclo for
 
->[!question]- hint1: allocazione dell'array
+>[!hint]- hint1: allocazione dell'array
 >```C
 >#include <stdio.h>
 >#include <stdlib.h>
@@ -98,7 +102,7 @@ Alloca dinamicamente un array di 4 elementi ed assegnagli i valori che vanno da 
 >alloco dinamicamente un array di quattro elementi interi, per farlo serve la funzione malloc, contenuta nella libreria stdlib.h (ricordatevi di includerla se state usando la malloc). 
 >La malloc prende in input la dimensione in byte da allocare, ovviamente questa è 4 volte la dimensione in byte di un intero (sizeof(int) per 4 volte).
 
->[!question]- hint2: assegnamento all'array
+>[!hint]- hint2: assegnamento all'array
 >```C
 >#include <stdio.h>
 >#include<stdlib.h>
@@ -166,7 +170,7 @@ Definisci la funzione "aumenta". SENZA MODIFICARE LE ALTRE PARTI DEL MAIN (IN PA
 "aumenta" prende in input un numero float e un intero, e aumenta il primo numero di tanto quanto specificato dall'intero. In questo caso, quindi dovrebbe aumentare il valore di "pi" di 1.
 
 
->[!question]- Hint 1
+>[!hint]- Hint 1
 >
 >Dobbiamo definire una funzione: che prende in input un float e un intero.
 >```C
@@ -182,7 +186,7 @@ Definisci la funzione "aumenta". SENZA MODIFICARE LE ALTRE PARTI DEL MAIN (IN PA
 >```
 >Ma attenzione! Cosiì non va bene! Perchè?...
 
->[!question]- Hint 2
+>[!hint]- Hint 2
 >Non va bene perché la funzione non sta veramente modificando la variabile pi!
 >Quello che sta facendo è solamente prenderne il valore, andate su python tutor per convincervene.
 >Quindi quello che vogliamo sapere, è dov'è ESATTAMENTE la variabile pi. Ergo **gli dobbiamo passare il suo indirizzo di memoria, non il suo valore**
@@ -198,7 +202,7 @@ Definisci la funzione "aumenta". SENZA MODIFICARE LE ALTRE PARTI DEL MAIN (IN PA
 >}
 >```
 
->[!question]- Soluzione per caproni
+>[!question]- Soluzione
 >```C
 >#include <stdio.h>
 >float aumenta(float * puntatore_a_num1, int num2){
@@ -255,7 +259,7 @@ int main(){
 }
 ```
 
->[!question]- Hint 1
+>[!hint]- Hint 1
 > ovviamente dobbiamo fare un ciclo for per scorrere tutto l'array, se non posso usare a, posso usare un puntatore agli elementi di a, cioè b.
 > ```C
 > #include <stdio.h>
@@ -268,7 +272,7 @@ int main(){
 > }
 > ```
 
->[!question]- Hint 2
+>[!hint]- Hint 2
 >Nella printf devo chiamare ad ogni iterazione di i, l'i-esimo elemento puntato da b.
 >Per scrivere l'i-esimo elemento puntato da b, si scrive:
 >```C
@@ -327,10 +331,10 @@ int main(){
 }
 ```
 
->[!question]- Hint1
+>[!hint]- Hint1
 >siccome non so a priori quanto grosso dovrà essere l'array me lo devo creare dinamicamente
 
->[!question]- Hint 2
+>[!hint]- Hint 2
 >La funzione che voglio prende in input un array, la sua dimensione, e mi restituisce in output un nuovo array fatto di "uni"
 >```C
 >int * array_di_uno(int * array, int dimensione_array){
@@ -380,7 +384,6 @@ int main(){
 #### Esercizio 4 medium
 
 Questa è la continuazione dell'[[Lezione 8#Esercizio 5 easy|esercizio 5 easy]] Se non hai fatto quello, fallo prima di fare questo
-
 
 >[!question]- Fai una funzione che prende in input un punto, ad esempio p2 e lo stampa così: "(1,7)"
 >```C
@@ -449,7 +452,7 @@ Fai un programma che prende in input dall'utente continuamente un intero fino a 
 Ogni intero che viene preso in input dall'utente deve essere inserito in un array.
 Ogni volta che inserisci l'intero stampa l'array.
 
->[!question]- Hint 1 la funzione che stampa l'array
+>[!hint]- Hint 1 la funzione che stampa l'array
 >Una parte importante di questo programma è la funzione che stampa l'array, consiglio di cominciare da quella.
 >```C
 >#include <stdio.h>
@@ -463,7 +466,7 @@ Ogni volta che inserisci l'intero stampa l'array.
 >}
 >```
 
->[!question]- Hint 2 il main: prendere l'intero in input
+>[!hint]- Hint 2 il main: prendere l'intero in input
 >Ovviamente serve un array, visto che non sappiamo quanti interi metterà l'utente è chiaro che non ci basta allocare l'array così
 >```C
 >int a[10];
@@ -497,7 +500,7 @@ Ogni volta che inserisci l'intero stampa l'array.
 >Con la scanf prendo in input l'intero, e ora che ci faccio?
 >Lo metto in un array!
 
->[!question]- Hint 3: inserire l'intero nell'array
+>[!hint]- Hint 3: inserire l'intero nell'array
 >adesso la parte succosa. Non possiamo inserire e basta l'intero nell'array! dobbiamo prima verificare che l'array non sia pieno! se è pieno va aumentata la memoria
 >```C
 >while(1){
@@ -559,3 +562,7 @@ int main() {
     return 0;
 }
 ```
+
+
+
+
