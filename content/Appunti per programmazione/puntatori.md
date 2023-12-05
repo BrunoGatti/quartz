@@ -62,6 +62,12 @@ NO! non va bene fare così.
 > |---|---|---|
 > |x|3|0x12345678
 > |p|0x12345678|0x39184233
+> Cioè vogliamo p che punti alla variabile x
+> 
+>```mermaid
+>graph LR;
+>p-->x=3
+>``` 
 
 Quindi quello che vogliamo è che p assuma come valore l'indirizzo della variabile x (che nel nostro esempio è 0x12345678).
 Per fare questo basta fare così:
