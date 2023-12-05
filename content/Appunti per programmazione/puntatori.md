@@ -91,7 +91,7 @@ Bene, ora il puntatore p "punta" alla variabile x.
 
 ```mermaid
 
-graph LR;
+graph TD;
 
 p-->x=3
 
