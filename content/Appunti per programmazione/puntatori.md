@@ -90,9 +90,11 @@ Bene, ora il puntatore p "punta" alla variabile x.
 |p|0x12345678|0x39184233
 
 ```mermaid
+
 graph LR;
 
 p-->x=3
+
 ```
 
 Adesso, siccome x è puntata da p, possiamo stampare il contenuto di x usando p invece che x stessa? Domanda retorica, certo che si, ma come si fa?
