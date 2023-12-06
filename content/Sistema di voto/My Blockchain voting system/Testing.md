@@ -436,5 +436,4 @@ Questo test verifica che una transazione di voto fallisca quando il booth di vot
 Questo test verifica che una transazione di voto fallisca quando il booth di voto ha un numero eccessivo di token, anche se è stata data l'autorizzazione. Il test si aspetta che il sistema restituisca un errore specifico indicante che il bilancio supera il limite consentito.
 
 ## Conclusioni
-
 Questi test forniscono una copertura completa delle funzionalità principali del contratto VotingSystem. Ogni test è progettato per garantire che il sistema di voto funzioni correttamente in diversi scenari. È consigliabile eseguire questi test regolarmente durante lo sviluppo e prima dell'implementazione del sistema in un ambiente di produzione.
