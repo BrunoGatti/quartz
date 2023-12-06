@@ -33,7 +33,7 @@ anche supponendo un perfetto sistema di autenticazione a distanza basato su veri
 
 **È per questo motivo che, a mio parere, non si può prescindere dal voto in presenza indipendentemente dalla tecnologia usata.**
 
-Detto questo, un [[My Blockchain voting system|sistema di voto basato su sistemi decentralizzati]] può risolvere i [[#Qual'è il problema con questo sistema|problemi]] di cui abbiamo parlato nelle precedenti sezioni, e, dunque, migliorare drasticamente l'attuale sistema di voto.
+Detto questo, un [[Il mio sistema di voto basato su Blockchain|sistema di voto basato su sistemi decentralizzati]] può risolvere i [[#Qual'è il problema con questo sistema|problemi]] di cui abbiamo parlato nelle precedenti sezioni, e, dunque, migliorare drasticamente l'attuale sistema di voto.
 
-[[My Blockchain voting system|Prossimo capitolo]]
+[[Il mio sistema di voto basato su Blockchain|Prossimo capitolo]]
 [[Sistema di voto|Indice]]
