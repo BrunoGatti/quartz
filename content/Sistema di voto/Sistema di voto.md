@@ -5,5 +5,5 @@
 	- [[VotingBooth.py]]
 	- [[Token.sol]]
 	- [[VotingSystem.sol]]
+- [[Testing]]
 - [[Demo]] 
-- [[Deploying]]
