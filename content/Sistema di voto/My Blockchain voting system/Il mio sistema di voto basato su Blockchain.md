@@ -57,13 +57,12 @@ Nel nostro sistema, per verificare che il votante abbia votato, ci basta vedere 
 A questo proposito abbiamo sviluppato un'applicativo python [[verify.py]] che mostra in real time la balance di token di ogni macchina.
 Se un utente esce da una cabina di voto, e la macchina ad esso corrispondente ha ancora un token assegnato, allora l'utente non ha correttamente espresso il suo voto.
 Un addetto avrà il compito di monitorare la balance degli indirizzi associati alle macchine di voto, per evitare che vengano commesse queste irregolarità.
-## Nel complesso il progetto è strutturato due parti:
+## Conclusioni
+Per ricapitolare, la mia proposta di sistema di voto è un'applicazione decentralizzata che si basa su un [[Back end]] sviluppato in solidity e implementato su ethereum blockchain, ed un front end sviluppato in python.
+Questo sistema non si pone come un cambio radicale al tradizionale sistema di voto in presenza, ma piuttosto come una soluzione tecnologica decentralizzata per migliorare il sistema di voto attuale.
 
-#### Applicativi python:
-- [[chairperson.py]]: applicativo front end per il presidente di seggio
-- [[VotingBooth.py]]: applicativo front end che gira sulle macchine per il voto
-- Verify.py: applicativo front end che gira sul terminale dell'operatore che verifica il voto
-#### Smart contracts:
-- [[Token.sol]]: smart contract rilasciato sul nodo Ethereum che fa il mint dei token e che ne gestisce il trasferimento
-- [[VotingSystem.sol]]: smart contract che gestisce la logica di voto
+Di seguito troverete la documentazione dettagliata del codice di questo progetto, a cominciare dal lato back end + testing, proseguendo con il lato front end.
+
+prossima sezione: [[Documentazione del progetto]]
+[[Sistema di voto|indice]]
 
