@@ -1,6 +1,5 @@
 Questo documento fornisce una guida dettagliata sui test implementati per il contratto VotingSystem e MyToken. Gli scopi principali di questi test sono verificare il corretto funzionamento del sistema di voto, inclusi aspetti come la corretta configurazione iniziale, la gestione delle autorizzazioni e il corretto svolgimento delle votazioni.
 ## Test sugli smart contracts
-Testare il funzionamento degli smart contracts.
 Le interazioni che avvengono con gli smart contracts:
 
 1. Il token viene trasferito dall'indirizzo del chairperson a quello della macchina che vota
@@ -59,7 +58,7 @@ signed_transaction = web3.eth.account.sign_transaction(transaction, sender_priva
 4. Testare che un indirizzo con troppi tokens (più di 1) non possa votare
 
 ## Test environment deploy
-per i primi test utilizzo una chain locale di Remix, versione Shanghai
+per i primi test utilizzo una chain locale di Remix.
 
 Chairperson = Token Owner = 0x5b3...eddC4
 Voting System = 0xD91... 39138
