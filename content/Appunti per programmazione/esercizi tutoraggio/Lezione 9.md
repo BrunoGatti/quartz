@@ -112,8 +112,10 @@ Se non sai di cosa sto parlando e vuoi ripassare studia [[Stringhe in C| questo]
 >  printf("stringa 1:%s\tstringa 2:%s\n",str1,str2);
 >}
 >```
+>In questa soluzione definisco due stringhe cioè due array di char di size 6.
+>Il metodo di assegnamento è diverso (nel primo assegno un carattere per volta nel secondo tutto insieme) ma il risultato è lo stesso.
 
-
+##### Per continuare gli esercizi con le stringhe vai [[Lezione 9#Esercizio 4 medium]]
  
 
  
@@ -224,3 +226,312 @@ Per assegnare i valori 3 e 4 dobbiamo accedere alla struttura tramite il puntato
 >}
 >```
 
+#### Esercizio 4 medium
+
+Ora che abbiamo allocato due stringhe vorrei una funzione che prese due stringhe le concatena una all'altra.
+
+Purtroppo questo esercizio l'ha già fatto rossi oggi. 
+
+Quindi vi tocca un esercizio più difficile: Fai una funzione che prende in input 3 stringhe, e restituisce una stringa che è la concatenazione di queste tre stringhe dat questo main:
+
+```C
+int main(){
+	char *a="ciao ";
+	char *b="come ";
+	char *c="va?";
+	printf("%s",concatena(a,b,c));
+}
+```
+
+##### Soluzione guidata passo per passo
+
+innanzitutto dobbiamo andare a capire il main.
+```C
+#include<stdio.h>
+
+int main(){
+	char *a="ciao ";
+	char *b="come ";
+	char *c="va?";
+	printf("%s",concatena(a,b,c));
+}
+```
+In questo main definisco tre stringhe, e vado a stampare la loro concatenazione.
+Per fare questo devo definire la funzione "concatena".
+
+La funzione concatena prende in innput tre stringhe (quindi tre puntatori a caratteri) e restituisce una stringa (quindi un puntatore  a char)
+```C
+char * concatena(char * str1,char * str2, char * str3){}
+```
+
+Adesso andiamo a vedere che cosa deve fare questa funzione.
+Per prima cosa deve.
+
+```C
+char * concatena(char * str1,char * str2, char * str3){
+	//definisce una nuova stringa (quella concatenata)
+
+	//inserisce nella nuova stringa i caratteri di stringa 1
+
+	//inserisce nella nuova stringa i caratteri di stringa 2
+
+	//inserisce nella nuova stringa i caratteri di stringa 3
+	
+}
+```
+
+Questo è lo scheletro della funzione.
+Andiamo a vedere come farlo
+
+##### Definire una nuova stringa
+La nuova stringa di output può essere definita staticamente?
+Tipo:
+```C
+char output[10];
+```
+NOPE. Perchè non conosciamo a priori quanto deve essere lunga.
+Quindi prima devo capire quanto devo farla lunga, e poi, una volta capito, devo allocare dinamicamente la stringa.
+
+```C
+char * concatena(char * str1,char * str2, char * str3){
+//definisce una nuova stringa (quella concatenata)
+	// trovo la lunghezza della stringa di output
+	int lunghezza_totale = strlen(str1)+strlen(str2)+strlen(str3);
+	//alloco la nuova stringa di output
+	char * stringa_concatenata=malloc(sizeof(char)*lunghezza_totale);
+
+
+	//inserisce nella nuova stringa i caratteri di stringa 1
+
+	//inserisce nella nuova stringa i caratteri di stringa 2
+
+	//inserisce nella nuova stringa i caratteri di stringa 3
+	
+}
+```
+
+Okay, quindi quello che ho fatto è stato trovarmi la lunghezza totale sommando la lunghezza di ogni singola stringa. Per farlo ho chiamato la funzione strlen() che è una funzione della libreria <string.h> (ricordatevi di includerla)
+
+##### Inserire i caratteri nella stringa di output
+Per fare questo basta iterare su ogni singolo carattere di ogni stringa ed aggiungerlo alla stringa di output.
+Lo facciamo con un ciclo for
+
+```C
+char * concatena(char * str1,char * str2, char * str3){
+//definisce una nuova stringa (quella concatenata)
+	// trovo la lunghezza della stringa di output
+	int lunghezza_totale = strlen(str1)+strlen(str2)+strlen(str3);
+	//alloco la nuova stringa di output
+	char * stringa_concatenata=malloc(sizeof(char)*lunghezza_totale);
+
+
+	//inserisce nella nuova stringa i caratteri di stringa 1
+	for (int i=0;i<strlen(str1);i++){
+		stringa_concatenata[i]=str1[i];
+	}
+	//inserisce nella nuova stringa i caratteri di stringa 2
+
+	//inserisce nella nuova stringa i caratteri di stringa 3
+	
+}
+```
+Quindi alla posizione 0 di "stringa concatenata" farò corrispondere il carattere all posizione 0 di str1.
+
+Ora che ho finito di copiare la prima lista devo copiare anche la seconda. Però adesso non va più bene usare i per indicizzare la stringa concatenata. Cioè se facessimo così:
+```C
+char * concatena(char * str1,char * str2, char * str3){
+//definisce una nuova stringa (quella concatenata)
+	// trovo la lunghezza della stringa di output
+	int lunghezza_totale = strlen(str1)+strlen(str2)+strlen(str3);
+	//alloco la nuova stringa di output
+	char * stringa_concatenata=malloc(sizeof(char)*lunghezza_totale);
+
+
+	//inserisce nella nuova stringa i caratteri di stringa 1
+	for (int i=0;i<strlen(str1);i++){
+		stringa_concatenata[i]=str1[i];
+	}
+	//inserisce nella nuova stringa i caratteri di stringa 2
+	for (int i=0;i<strlen(str2);i++){
+		stringa_concatenata[i]=str2[i];
+	}
+	//inserisce nella nuova stringa i caratteri di stringa 3
+	
+}
+```
+si andrebbe a copiare sulla stringa concatenata si, i valori di stringa 2, ma si andrebbero a sovrascrivere quelli scritti in precedenza, quindi serve un iteratore a parte per la stringa concatenata che non venga resettato a zero ogni volta che il ciclo for finisce
+
+```C
+char * concatena(char * str1,char * str2, char * str3){
+//definisce una nuova stringa (quella concatenata)
+	// trovo la lunghezza della stringa di output
+	int lunghezza_totale = strlen(str1)+strlen(str2)+strlen(str3);
+	//alloco la nuova stringa di output
+	char * stringa_concatenata=malloc(sizeof(char)*lunghezza_totale);
+	int j=0; //iteratore per la stringa concatenata
+
+	//inserisce nella nuova stringa i caratteri di stringa 1
+	for (int i=0;i<strlen(str1);i++){
+		stringa_concatenata[j]=str1[i];
+		j++;
+	}
+	//inserisce nella nuova stringa i caratteri di stringa 2
+	for (int i=0;i<strlen(str2);i++){
+		stringa_concatenata[j]=str2[i];
+		j++;
+	}
+	//inserisce nella nuova stringa i caratteri di stringa 3
+	for (int i=0;i<strlen(str2);i++){
+		stringa_concatenata[j]=str3[i];
+		j++;
+	}
+	stringa_concatenata[j]='\0';
+	return stringa_concatenata;
+}
+```
+A questo punto basta farlo anche per l'ultima stringa e poi non scordatevi di aggiungere alla fine il carattere di fine stringa '\\0'
+
+
+Per migliorare ancora questa soluzione si può, prima di fare tutte queste operazioni, controllare che l'allocazione di memoria della stringa concatenata sia andata a buon fine, ad esempio con un if
+
+```C
+char * concatena(char * str1,char * str2, char * str3){
+//definisce una nuova stringa (quella concatenata)
+	// trovo la lunghezza della stringa di output
+	int lunghezza_totale = strlen(str1)+strlen(str2)+strlen(str3);
+	//alloco la nuova stringa di output
+	char * stringa_concatenata=malloc(sizeof(char)*lunghezza_totale);
+	int j=0; //iteratore per la stringa concatenata
+
+	if(stringa_concatenata!=NULL){
+		//inserisce nella nuova stringa i caratteri di stringa 1
+		for (int i=0;i<strlen(str1);i++){
+			stringa_concatenata[j]=str1[i];
+			j++;
+		}
+		//inserisce nella nuova stringa i caratteri di stringa 2
+		for (int i=0;i<strlen(str2);i++){
+			stringa_concatenata[j]=str2[i];
+			j++;
+		}
+		//inserisce nella nuova stringa i caratteri di stringa 3
+		for (int i=0;i<strlen(str2);i++){
+			stringa_concatenata[j]=str3[i];
+			j++;
+		}
+		stringa_concatenata[j]='\0';
+	}
+	return stringa_concatenata
+}
+```
+
+Finito!
+Qui sotto trovate la soluzione completa da copiare ed incollare.
+
+>[!question]- soluzione
+>```C
+>#include<stdio.h>
+>#include<stdlib.h>
+>#include<string.h>
+>
+>char * concat(char* a,char *b,char *c){
+>   int total_size=strlen(a)+strlen(b)+strlen(c);
+>   char * chained = (char *)malloc(total_size*sizeof(char));
+>   int j=0;
+>   if(chained!=NULL){
+>       for (int i=0;i< strlen(a);i++){
+>           chained[j]=a[i];
+>           j++;
+>       }
+>       for (int i=0; i<strlen(b);i++){
+>           chained[j]=b[i];
+>           j++;
+>       }
+>       for(int i=0; i<strlen(b);i++){
+>           chained[j]=c[i];
+>           j++;
+>       }
+>       chained[j]='\0';
+>   }
+>   return chained;
+>}
+>
+>int main(){
+>   char * a="ciao ";
+>   char * b="come ";
+>   char * c="va?";
+>
+>   printf("%s",concat(a,b,c));
+>}
+>```
+
+
+#### Esercizio 1 hard
+Fai la funzione di concatenazione con un numero arbitrario di stringhe!
+Ci sono diversi modi per farlo, quello che consiglio è di passare un array di stringhe!!
+Pensa bene come potresti definire questo array di stringhe e come all'interno della funzione separare ogni singola stringa e fare le operazioni che abbiamo fatto nell'esercizio precedente.
+
+>[!hint]- un hint che posso darvi è il main. Così capite cosa andrà passato alla funzione. Guardatelo.
+>```C
+>int main(){
+>   char * a="ciao ";
+>   char * b="come ";
+>   char * c="va?";
+>
+>   char ** array_di_stringhe;
+>   array_di_stringhe[0]=a;
+>   array_di_stringhe[1]=b;
+>   array_di_stringhe[2]=c;
+>
+>   printf("%s\n",concatena(array_di_stringhe,3));
+>}
+>```
+>Come vedete alla funzione concatena passo un array di stringhe e il numero di stringhe che sto passando, nel mio caso gli passo tre stringhe.
+>Per passare un array di stringhe devo passare un puntatore ad un puntatore di char, cioè un puntatore a stringhe, cioè un array di stringhe fondamentalmente.
+
+##### SOLUZIONE:
+
+```C
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+
+char * concatena(char ** array_di_stringhe,int numero_stringhe){
+    int total_size=0;
+    //trova la dimensione totale
+    for(int i=0;i<numero_stringhe;i++){
+        total_size +=strlen(array_di_stringhe[i]);
+    }
+    //printf("%d\n",total_size);
+
+    //alloca la stringa
+    char * stringa_concatenata= malloc(sizeof(char)*total_size);
+
+    //controlla che l'allocazione sia andata a buon fine
+    if(stringa_concatenata!=NULL){
+        int k=0;
+        for(int i=0;i< numero_stringhe;i++){ //per ogni stringa nell'array di stringhe
+            for (int j=0;j<strlen(array_di_stringhe[i]);j++){//per ogni carattere della stringa
+                stringa_concatenata[k]=array_di_stringhe[i][j];
+                k++;
+            }
+        }
+        stringa_concatenata[k]='\0';
+    }
+    return stringa_concatenata;
+
+}
+
+int main(){
+    char * a="ciao ";
+    char * b="come ";
+    char * c="va?";
+
+    char ** array_di_stringhe;
+    array_di_stringhe[0]=a;
+    array_di_stringhe[1]=b;
+    array_di_stringhe[2]=c;
+
+    printf("%s\n",concatena(array_di_stringhe,3));
+}
+```
