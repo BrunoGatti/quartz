@@ -8,6 +8,8 @@
 8. [[Qualche ragione per programmare come un uomo delle caverne]]
 9. [[Complessità computazionale]]
 10. [[ESERCIZI IN C|ESERCIZI per c]]
+11. [[Struct]]
 
 ## Esercizi delle lezioni di laboratorio del 2023
 1. [[Lezione 8]]
+2. [[Lezione 9]]
