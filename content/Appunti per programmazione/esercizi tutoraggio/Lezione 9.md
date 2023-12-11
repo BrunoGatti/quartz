@@ -99,6 +99,35 @@ Okay, come avete visto a lezione con rossi le stringhe si dichiarano come un arr
 >[!question]- Dichiara una stringa che contiene la parola "python", si può fare in due modi. Falli entrambi
 
 Se non sai di cosa sto parlando e vuoi ripassare studia [[Stringhe in C| questo]].
+
+>[!soluzione]-
+>```C
+>#include <stdio.h>
+>#include <stdlib.h>
+>
+ >int main(){
+>  char str1[6]={'p','y','t','h','o','n'};
+>  char str2[6]="python";
+>
+>  printf("stringa 1:%s\tstringa 2:%s\n",str1,str2);
+>}
+>```
+
+
+ 
+
+ 
+```C
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(){
+    char str1[6]={'p','y','t','h','o','n'};
+    char str2[6]="python";
+
+    printf("stringa 1:%s\tstringa 2:%s\n",str1,str2);
+}
+```
 ## Medium
 #### Esercizio 1 medium
 
