@@ -520,7 +520,7 @@ Ogni volta che inserisci l'intero stampa l'array.
 >```
 >
 
-### soluzione completa da copiare e incollare per zombie da tastiera
+### soluzione completa da copiare e incollare per zombie
 ```C
 #include <stdio.h>
 #include <stdlib.h>
