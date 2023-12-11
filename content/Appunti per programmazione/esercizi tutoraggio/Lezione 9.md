@@ -69,6 +69,36 @@ Per esempio:
 Se non sai dove mettere le mani puoi studiare questa roba:
 1. [[allocazione dinamica della memoria in C]]
 2. [[Struct]]
+
+>[!hint]- Usa la malloc: questo è solo un hint, non c'è soluzione
+>Andiamo a capire: noi stiamo allocando una regione di memoria grande come la struttura punto.
+>Per dire questo dobbiamo dire a malloc di allocare "sizeof(struct Punto)", cioè "alloca una regione di memoria grande quanto al struttura punto".
+>Una volta fatto ciò la malloca restituisce un puntatore, si ma un puntatore a cosa? Un puntatore ad un punto! Quindi dobbiamo definire un puntatore ad un punto "struct Punto * puntatore_a_un_punto" e quel puntatore deve contenere il valore di ritorno della malloc
+
+>[!hint]- Usa la malloc: la malloc vuole sapere quanto allocare e restituisce un puntatore...
+>```C
+>#include<stdlib.h>
+>struct Punto {
+>	float x;
+>	float y;
+>}
+>
+>int main(){
+>	struct Punto * puntatore_a_un_punto = malloc(sizeof(struct Punto));
+>}
+>
+>```
+
+##### Continua l'esercizio [[Lezione 9#Esercizio 3 medium| qui]]
+
+#### Esercizio 4 easy
+
+Stringhe!
+Okay, come avete visto a lezione con rossi le stringhe si dichiarano come un array di caratteri.
+
+>[!question]- Dichiara una stringa che contiene la parola "python", si può fare in due modi. Falli entrambi
+
+Se non sai di cosa sto parlando e vuoi ripassare studia [[Stringhe in C| questo]].
 ## Medium
 #### Esercizio 1 medium
 
@@ -120,3 +150,48 @@ int main(){
 >    dist= sqrt(pow(A.x-B.x,2)+pow(A.y-B.y,2));
 >    return dist;
 >}
+
+#### Esercizio 3 medium
+
+Questo esercizio è il continuo di questo eserecizio: [[Lezione 9#Esercizio 3 easy]]. Fai prima quello se ancora non l'hai fatto.
+
+Adesso abbiamo allocato dinamicamente un punto.
+Fico, ma il punto è vuoto.
+Voglio assegnare al punto dei valori, facciamo P(1,3)
+E vorrei stampare questi valori per essere sicuro che il punto li abbia effettivamente.
+
+A questo punto dovreste avere il seguente main:
+```C
+#include<stdlib.h>
+#include<stdio.h>
+struct Punto {
+    float x;
+    float y;
+};
+
+int main(){
+    struct Punto * puntatore_a_un_punto = malloc(sizeof(struct Punto));
+}
+```
+
+>[!question]- assegna al punto i valori (3,4)
+
+Per assegnare i valori 3 e 4 dobbiamo accedere alla struttura tramite il puntatore. Se non hai idea di come si faccia: leggi qui [[allocazione dinamica della memoria in C#Accedere ad una struttura allocata dinamicamente]]
+
+>[!solzione]- soluzione
+>```C
+>#include<stdlib.h>
+>#include<stdio.h>
+>struct Punto {
+>    float x;
+>    float y;
+>};
+>
+>int main(){
+>    struct Punto * puntatore_a_un_punto = malloc(sizeof(struct Punto));
+>    puntatore_a_un_punto->x = 3;
+>    puntatore_a_un_punto->y = 4;
+>    printf("p.x=%f\tp.y=%f\n",puntatore_a_un_punto->x,puntatore_a_un_punto->y);
+>}
+>```
+

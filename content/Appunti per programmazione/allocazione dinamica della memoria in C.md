@@ -70,3 +70,55 @@ Quindi: deallocate.
 
 [[Lezione 8#esercizio 1 hard]]
 
+## Accedere ad una struttura allocata dinamicamente
+
+Più spesso che mai ci capiterà di allocare dinamicamente piuttosto che semplici interi e array, come abbiamo fatto finora, delle cose più complesse come ad esempio le strutture
+
+Supponiamo di avere questo main
+```C
+
+#include<stdlib.h>
+#include<stdio.h>
+struct Punto {
+    float x;
+    float y;
+};
+
+int main(){
+    struct Punto * p = malloc(sizeof(struct Punto));
+}
+```
+Abbiamo una struttura che rappresenta i punti sul piano cartesiano, ed abbiamo allocato la memoria dinamicamente per ottenere uno spazio con dentro una struttura punto.
+Fico, ma la struttura è vuota.
+Per riempirla dobbiamo accedere alla memoria tramite puntaore.
+
+Negli esempi precedenti per accedere al contenuto puntato dal puntatore "x" usavamo l'operatore di deferenziazione: "\*x"
+Anche adesso non è diverso, ma con le strutture possiamo usare una sintassi molto più intuitiva.
+Per dire "il valore x, contenuto nella struttura Punto, puntata dal puntatore p" dovremmo scrivere una cosa tipo
+```C
+(* p).x=3
+```
+che non è sbagliato, ma si può scrivere così:
+
+```C
+p->x=3
+```
+molto più intuitivo, cioè p, sta puntando ad una locazione di memoria che ha una variabile chiamata x, assegnamo a quella variabile il valore 3.
+
+Nel nostro caso quindi il codice completo per assegnare al nostro punto i valori (3,4) è:
+
+```C
+#include<stdlib.h>
+#include<stdio.h>
+struct Punto {
+    float x;
+    float y;
+};
+
+int main(){
+    struct Punto * puntatore_a_un_punto = malloc(sizeof(struct Punto));
+    puntatore_a_un_punto->x = 3;
+    puntatore_a_un_punto->y = 4;
+    printf("p.x=%f\tp.y=%f\n",puntatore_a_un_punto->x,puntatore_a_un_punto->y);
+}
+```
