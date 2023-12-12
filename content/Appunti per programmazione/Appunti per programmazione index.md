@@ -1,14 +1,21 @@
-## INDICE (indice per modo di dire, gli argomenti sono solo listati, non sono in un ordine particolare)
-1. [[Ricorsione]]
-2. [[Merge sort]]
-3. [[Binary search]]
-5. [[Esercizi sulla ricorsione]]
-6. [[C]]
-7. [[puntatori|Puntatori in C]]
-8. [[Qualche ragione per programmare come un uomo delle caverne]]
-9. [[Complessità computazionale]]
-10. [[ESERCIZI IN C|ESERCIZI per c]]
-11. [[Struct]]
+## INDICE 
+
+### Algoritmi
+-  [[Merge sort]]
+-  [[Binary search]]
+
+### Roba in C
+-  [[Ricorsione]]
+-  [[Esercizi sulla ricorsione]]
+-  [[C]]
+-  [[puntatori|Puntatori in C]]
+- [[Qualche ragione per programmare come un uomo delle caverne]]
+-  [[Complessità computazionale]]
+-  [[ESERCIZI IN C|ESERCIZI per c]]
+- [[Struct]]
+-  [[allocazione dinamica della memoria in C]]
+-  [[puntatori]]
+-  [[Stringhe in C]] 
 
 ## Esercizi delle lezioni di laboratorio del 2023
 1. [[Lezione 8]]
