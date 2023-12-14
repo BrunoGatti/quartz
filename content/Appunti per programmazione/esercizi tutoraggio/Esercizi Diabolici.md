@@ -39,6 +39,7 @@ Buon Lavoro: qui sotto c'è la soluzione.
 >   punto ** lista_di_punti=malloc(sizeof(punto *));
 >   if(lista_di_punti==NULL){return 0;}
 >   int numero_punti=0;
+>   while(1){
 >       //chiedere all'utente le coordinate
 >       printf("inserire la x del punto: ");
 >       if(scanf("%f",&x)!=1){break;}
@@ -116,4 +117,12 @@ Buon Lavoro: qui sotto c'è la soluzione.
 >   return p;
 >}
 >```
+
+## Esercizio 2: Parole crociate
+Scrivi un programma in C che prende in input una matrice di lettere.
+
+
+![[Pasted image 20231212142638.png]]
+
+Una cosa del genere.
 

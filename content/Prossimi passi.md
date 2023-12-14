@@ -1,0 +1,1 @@
+dividi il dataset0 in 80 20 e fai few shots, zero shots e fine tuning.
