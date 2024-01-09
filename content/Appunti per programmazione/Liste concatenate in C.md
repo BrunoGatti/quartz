@@ -264,8 +264,113 @@ lista --> nodo1_vecchio
 nodo1_vecchio <--> nodo2_vecchio
 nodo2_vecchio <--> NULL
 ```
+Quindi dobbiamo dire al nodo nuovo di puntare al nodo1_vecchio. Dire al nodo1_vecchio di puntare a quello nuovo, e restituire la lista aggiornata.
 
 ```C
+n->succ = lista;
+```
+Il nuovo nodo (n) punta al primo elemento della lista (il nodo vecchio 1 del disegno).
+
+```C
+lista->prec=n;
+```
+il nodo vecchio (che è il primo elemento della lista) viene fatto puntare al nodo nuovo.
+La situazione è la seguente:
+```mermaid
+classDiagram
+  class nodo_nuovo_da_inserire {
+    - prev: NULL
+    - next: NULL
+    - info: valore
+  }
+
+  class nodo1_vecchio {
+    - prev: NULL
+    - next: nodo2_vecchio
+    - info: 5
+  }
+
+  class nodo2_vecchio {
+    - prev: nodo1_vecchio
+    - next: NULL
+    - info: 9
+  }
+
+lista --> nodo_nuovo_da_inserire
+ nodo_nuovo_da_inserire<--> nodo1_vecchio
+nodo1_vecchio <--> nodo2_vecchio
+nodo2_vecchio <--> NULL
+```
+
+Qui sotto c'è il codice completo della funzione:
+
+```C
+nodo * aggiungi_in_testa(nodo * lista,float valore){
+    //creo un nuovo nodo
+    nodo * n= malloc(sizeof(nodo));
+    n->info = valore;
+    n->prec=NULL;
+    n->succ=NULL;
+    
+    //aggiungo il nodo in testa alla lista
+    n->succ = lista; 
+    if (lista!=NULL){
+        lista->prec=n;
+    }
+    lista=n;
+    //ritorno la lista aggiornata
+    return lista;
+}
+```
+
+#### Perchè c'è quell' "if" strano?
+```C
+    if (lista!=NULL){
+        lista->prec=n;
+    }
+```
+Questo if controlla che la lista non sia vuota prima di eseguire l'istruzione 
+```C
+lista->prec = n
+```
+Questo è importante perchè quando la lista è vuota non c'è un elemento attaccato a lista
+
+```mermaid
+graph TD
+
+lista --> NULL
+```
+
+E quindi quando il computer, durante l'esecuzione si va a cercare "lista->prec" non lo trova (E grazie al cazzo, non c'è nessun elemento nella lista). E quindi impazzisce, si incazza, e ritorna il famoso errore: SEGMENTATION FAULT.
+
+>[!per i più nerd]- La segmentation fault
+>La segmentation fault è un errore che sostanzialmente significa che il computer ha acceduto della memoria a cui non sarebbe dovuto accedere, è di gran lunga il più comune errore di runtime (cioè un errore che avviene mentre il programma sta girando e non mentre il programma sta compilando tipo gli errori rossi classici o i warning). 
+>Quando un programma cerca di accedere della roba che non esiste, o a scrivere cose che non dovrebbe scrivere in posti che non ha ancora creato, spesso va ad accedere ad aree di memoria che non gli competono. Per evitare che il programma vada a scrivere in aree di memoria critiche il sistema ferma tutto e lancia segmentation fault.
+>Nel nostro caso abbiamo provato ad accedere ad un nodo che non avevamo ancora allocato, dando quindi origine ad un segmentation fault.
+
+Il vostro programma ora dovrebbe essere una cosa di questo tipo
+
+```C
+#include <stdio.h>
+#include <stdlib.h>
+
+struct nodo{
+    float info;
+    struct nodo * succ;
+    struct nodo * prec;
+
+};typedef struct nodo nodo;
+
+nodo * lista_vuota();
+nodo * aggiungi_in_testa(nodo * lista,float valore);
+
+int main(){
+    nodo * lista= lista_vuota();
+}
+
+nodo * lista_vuota(){
+    return NULL;
+}
 nodo * aggiungi_in_testa(nodo * lista,float valore){
     //creo un nuovo nodo
     nodo * n= malloc(sizeof(nodo));
@@ -275,8 +380,8 @@ nodo * aggiungi_in_testa(nodo * lista,float valore){
 
     //aggiungo il nodo in testa alla lista
     n->succ = lista;
-    if (n->succ!=NULL){
-        n->succ->prec=n;
+    if (lista!=NULL){
+        lista->prec=n;
     }
     lista=n;
 
@@ -284,3 +389,160 @@ nodo * aggiungi_in_testa(nodo * lista,float valore){
     return lista;
 }
 ```
+
+Abbiamo però solo una lista vuota:
+
+```C
+int main(){
+    nodo * lista= lista_vuota();
+}
+```
+```mermaid
+graph TD
+
+lista --> NULL
+```
+
+Andiamo ad aggiungere due nodi alla lista. 
+
+```C
+int main(){
+    nodo * lista= lista_vuota();
+    lista = aggiungi_in_testa(lista, 3);
+    lista = aggiungi_in_testa(lista,5);
+}
+```
+A questo punto dovremmo avere questa situazione se compiliamo ed eseguiamo il programma:
+
+```mermaid
+classDiagram
+
+
+  class nodo1 {
+    - prev: NULL
+    - next: nodo2_vecchio
+    - info: 5
+  }
+
+  class nodo2 {
+    - prev: nodo1_vecchio
+    - next: NULL
+    - info: 9
+  }
+
+lista --> nodo1
+nodo1 <--> nodo2
+nodo2 --> NULL
+```
+
+
+>[!per le bestie]- per le bestie che non si ricordano come si compila ed esegue
+>1. andate nella cartella dove avete salvato il file da linea di comando
+>2. lanciate il comando di compilazione 
+>   ```bash
+>   gcc il_mio_programma.c -o il_mio_programma.out
+>   ```
+>3. eseguire il file eseguibile
+>   ```bash
+>   ./il_mio_programma.out
+>   ```
+
+Se avete compilato ed eseguito avrete visto che il programma non fa assolutamente nulla di nulla.
+Questo perchè stiamo solo allocando una lista ma non stiamo stampando niente.
+Approfittiamone per scrivere una funzione che stampa la lista.
+
+### Funzione che stampa la lista
+Come sempre, le funzioni hanno un input e un output.
+La funzione prende in input la lista da stampare, e in output non ritorna nulla, stampa e basta.
+
+```C
+void stampa_lista(nodo* lista);
+```
+
+Ora creiamo un puntatore, questo puntatore, ha la funzione di puntare ad ogni elemento della lista, prende un elemento, stampa il valore, e passa a quello successivo.
+
+```C
+void stampa_lista(nodo * lista){
+	nodo * iteratore=lista;
+    printf("lista->"); //estetica
+    while(iteratore!=NULL){
+        printf("%f->",iteratore->info);
+        iteratore=iteratore->succ;
+    }
+    printf("null"); //estetica
+}
+```
+
+A questo punto se aggiungiamo la funzione di stampa nel main possiamo vedere che gli elementi della lista sono stati allocati correttamente:
+
+```C
+int main(){
+    nodo * lista= lista_vuota();
+    lista = aggiungi_in_testa(lista, 3);
+    lista = aggiungi_in_testa(lista,5);
+    stampa_lista(lista);
+}
+
+```
+Il programma intero è questo:
+
+```C
+#include <stdio.h>
+#include <stdlib.h>
+
+struct nodo{
+    float info;
+    struct nodo * succ;
+    struct nodo * prec;
+
+};typedef struct nodo nodo;
+
+nodo * lista_vuota();
+nodo * aggiungi_in_testa(nodo * lista,float valore);
+void stampa_lista(nodo * lista);
+
+int main(){
+    nodo * lista= lista_vuota();
+
+    lista = aggiungi_in_testa(lista, 3);
+    lista = aggiungi_in_testa(lista,5);
+
+    stampa_lista(lista);
+}
+
+nodo * lista_vuota(){
+    return NULL;
+}
+nodo * aggiungi_in_testa(nodo * lista,float valore){
+    //creo un nuovo nodo
+    nodo * n= malloc(sizeof(nodo));
+    n->info = valore;
+    n->prec=NULL;
+    n->succ=NULL;
+
+    //aggiungo il nodo in testa alla lista
+    n->succ = lista;
+    if (lista!=NULL){
+        lista->prec=n;
+    }
+    lista=n;
+
+    //ritorno la lista aggiornata
+    return lista;
+}
+void stampa_lista(nodo * lista){
+    nodo * iteratore=lista;
+    printf("lista->"); //estetica
+    while(iteratore!=NULL){
+        printf("%f->",iteratore->info);
+        iteratore=iteratore->succ;
+    }
+    printf("null"); //estetica
+}
+```
+
+Se lo eseguite il risultato sarà questo:
+
+![[Pasted image 20240109184002.png]]
+che è una fedele rappresentazione di quello che ci aspettavamo: una lista di due elementi: 5 e 3.
+
