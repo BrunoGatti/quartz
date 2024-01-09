@@ -343,7 +343,7 @@ lista --> NULL
 
 E quindi quando il computer, durante l'esecuzione si va a cercare "lista->prec" non lo trova (E grazie al cazzo, non c'è nessun elemento nella lista). E quindi impazzisce, si incazza, e ritorna il famoso errore: SEGMENTATION FAULT.
 
->[!per i più nerd]- La segmentation fault
+>[!hint]- La segmentation fault
 >La segmentation fault è un errore che sostanzialmente significa che il computer ha acceduto della memoria a cui non sarebbe dovuto accedere, è di gran lunga il più comune errore di runtime (cioè un errore che avviene mentre il programma sta girando e non mentre il programma sta compilando tipo gli errori rossi classici o i warning). 
 >Quando un programma cerca di accedere della roba che non esiste, o a scrivere cose che non dovrebbe scrivere in posti che non ha ancora creato, spesso va ad accedere ad aree di memoria che non gli competono. Per evitare che il programma vada a scrivere in aree di memoria critiche il sistema ferma tutto e lancia segmentation fault.
 >Nel nostro caso abbiamo provato ad accedere ad un nodo che non avevamo ancora allocato, dando quindi origine ad un segmentation fault.
@@ -436,7 +436,7 @@ nodo2 --> NULL
 ```
 
 
->[!per le bestie]- per le bestie che non si ricordano come si compila ed esegue
+>[!hint]- per le bestie che non si ricordano come si compila ed esegue
 >1. andate nella cartella dove avete salvato il file da linea di comando
 >2. lanciate il comando di compilazione 
 >   ```bash
