@@ -15,6 +15,7 @@
 -  [[allocazione dinamica della memoria in C]]
 -  [[puntatori]]
 -  [[Stringhe in C]] 
+- [[Liste concatenate in C]]
 
 ## Esercizi di base
 -  [[ESERCIZI IN C|ESERCIZI per c]]
