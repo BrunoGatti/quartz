@@ -229,9 +229,12 @@ Qui lo smart contract, il deployment è stato fatto all'indirizzo 0x08ce7b80BBE5
 ![[Pasted image 20231206235721.png]]
 Ovviamente non c'è alcun token assegnato al voting system.
 Risalendo ad i token di chairperson tramite metamask possiamo vedere l'indirizzo pubblico del contratto dei token MTK.
+
 ![[Pasted image 20231207000025.png]]
+
 l'indirizzo è 0x33286125410a9488d98C65AA18baB01213b5f035
 Dopo aver chiamato la funzione setTokenContract, pagato il gas price, ed aspettato che la transazione venisse minata, il risultato è il seguente:
+
 ![[Pasted image 20231207000128.png]]
 
 A questo punto la fase di Deployment è completata, possiamo passare ad una dimostrazione degli script python.
@@ -384,11 +387,15 @@ def enable_voting(token_contract,sender_private_key):
 
 ```
 Questa funzione fa scegliere uno dei voting booth all'interno della lista di possibili indirizzi, ed invia un token all'indirizzo selezionato (attraverso al funzione "mu_send_one_token_to_address")
+
 ![[Pasted image 20231207002718.png]]
+
 Quando una macchina viene scelta si verifica sempre che questa abbia 0 token di balance e, in caso sia così, si procede con la transazione.
 Qui sotto l'output del programma se si prova ad inviare un token ad un indirizzo che ne ha già uno.
 ![[Pasted image 20231209220642.png]]
+
 Di seguito la transazione effettuata dopo aver eseguito chairperson.py:
+
 ![[Pasted image 20231207002628.png]]
 ### voting_booth.py
 Una volta inviato il token all'indirizzo corrispondente alla macchina di voto, l'utente viene indirizzato alla macchina corrispondente.

@@ -16,6 +16,7 @@
 -  [[puntatori]]
 -  [[Stringhe in C]] 
 - [[Liste concatenate in C]]
+- [[Dizionari in C]]
 
 ## Esercizi di base
 -  [[ESERCIZI IN C|ESERCIZI per c]]
