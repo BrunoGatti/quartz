@@ -205,9 +205,8 @@ def eval_instance(df_row, debug=False):
 
 ## Esame dei risultati dell'evaluation
 Questo computando alcune statistiche sull'operazione di evaluation fatta, questi sono i risultati:
-
-![[Pasted image 20240306005255.png]]
-I risultati sono di un'accuracy totale del 51%.
+![[Pasted image 20240306095507.png]]
+I risultati sono di un'accuracy totale del 52%.
 Da notare alcuni fatti interessanti:
 1. L'overlapping index è notevolmente maggiore del 50% per le entità per cui è stato fatto un match corretto
 2. L'overlapping index è notevolmente basso per le entità giudicate non correttamente
@@ -244,3 +243,13 @@ Che sono spesso classificati male.
 Ma è anche il caso di altri oggetti:
 ![[Pasted image 20240306012207.png]]
 Questo può sicuramente essere visto come un limite del dataset, ma chiaramente evidenzia l'incapacità di kosmos nell'inferire l'entità da una vista parziale dell'oggetto.
+
+## Evaluation su nuovo dataset
+
+![[Pasted image 20240306094153.png]]
+Il nuovo dataset presenta una serie più numerosa di entità sia per numero generale che per varietà.
+La performance generale è calata dal 52% al 48%. Bisogna però tenere anche conto del fatto che mediamente il nuovo dataset ha bounding box di dimensione minore.
+Media dimensioni bounding box dataset vecchio:
+![[Pasted image 20240306100512.png]]
+Media dimensione bounding box dataset nuovo:
+![[Pasted image 20240306100450.png]]
