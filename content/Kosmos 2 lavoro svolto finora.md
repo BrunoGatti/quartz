@@ -1,18 +1,26 @@
 ## Come funziona il modello
+
 ![[MicrosoftTeams-image 1.png]]
 
 ## I dati "raw"
 I dati sono situati in una cartella. Ad ogni ambiente corrispondono una serie di immagini che ne catturano diverse porzioni.
 
 Qui sotto l'esempio dell'ambiente 3486
+
 ![[Pasted image 20240305235639.png]]
 
 Per ogni sono catturate multiple immagini da diverse posizioni:
+
 ![[Pasted image 20240305235818.png]]
+
 Per ognuna delle posizioni vengono catturate una serie di immagini da diversi angoli:
+
 ![[Pasted image 20240305235900.png]]
+
 ![[Pasted image 20240305235921.png]]
+
 ![[Pasted image 20240305235934.png]]
+
 Due degli angoli catturati con la telecamera in "posizione 0".
 
 Ognuno di questi ambienti contiene un file json che contiene informazioni riguardanti l'ambiente e, in particolare le informazioni riguardanti gli oggetti presenti nell'ambiente e i loro relativi bounding box per ogni immagine.
@@ -42,7 +50,9 @@ Adesso è il momento di estrarre il file "output.csv"
 Questo file contiene una entry per ogni oggetto che compare in ogni immagine.
 Questo significa che contiene le informazioni di ogni oggetto che compare in ogni immagine.
 Se un oggetto compare in più di un immagine, ad esempio in tre immagini, comparirà tre volte in questo file (ogni volta con un bounding box diverso, e riferito ad un'altra immagine).
+
 ![[Pasted image 20240306001249.png]]
+
 Qui c'è un esempio delle prime righe del file "output.csv".
 Per ogni entry c'è:
 1. L'ambiente in cui compare l'entità
@@ -58,7 +68,9 @@ La fase di evaluation prende come input questo file, verrà iterativamente utili
 L'output di questa fase è un file chiamato "zero_shot.csv".
 È un file che contiene tante entry quante il file originale. Le informazioni riportate sono le stesse del primo file, ma con l'aggiunta del bounding box generato da kosmos, e l'overlapping index, che indica l'indice di sovrapposizione tra il bounding box "target" (quello estratto dal file json) e quello generato da kosmos.
 Viene valutato che c'è un match tra i due bounding box se l'overlapping index è maggiore di 0.5 (se c'è almeno il 50% di sovrapposizione).
+
 ![[Pasted image 20240306001905.png]]
+
 Qui è riportato il codice di come ho calcolato l'overlapping index:
 ```python
 
@@ -146,17 +158,25 @@ E quindi sarà :
 Questo prompt molto semplice istruisce kosmos a generare il "grounding di una frase che inizia con il sostantivo "sofa".
 
 Questo non garantisce che il modello kosmos generi ESCLUSIVAMENTE il bounding box dell'entità sofa: infatti raramente è così. Genralmente kosmos genererà tre o quattro entità che si trovano nell'immagine insieme al Sofa.
+
 ![[Pasted image 20240306003829.png]]
+
 Ad esempio, è vero che ha generato il bounding box di "Sofa"
+
 ![[Pasted image 20240306003857.png]]
+
 ma allo stesso tempo ha generato il bounding box di altre entità come:
+
 ![[Pasted image 20240306003949.png]]
+
 ![[Pasted image 20240306004003.png]]
 
 A questo punto l'algoritmo itera su queste entità e verifica che ci sia un match con l'entità che ci interessa
 
 L'ouput finale di questo processo è un file come quello riportato qui:
+
 ![[Pasted image 20240306001905.png]]
+
 Qui sotto la funzione "eval _instance"
 ```python
 def eval_instance(df_row, debug=False):
@@ -205,7 +225,9 @@ def eval_instance(df_row, debug=False):
 
 ## Esame dei risultati dell'evaluation
 Questo computando alcune statistiche sull'operazione di evaluation fatta, questi sono i risultati:
+
 ![[Pasted image 20240306095507.png]]
+
 I risultati sono di un'accuracy totale del 52%.
 Da notare alcuni fatti interessanti:
 1. L'overlapping index è notevolmente maggiore del 50% per le entità per cui è stato fatto un match corretto
@@ -214,6 +236,7 @@ Da notare alcuni fatti interessanti:
 Inoltre se la cava notevolmente meglio su bounding box molto grandi (ergo quando l'oggetto è ben visibile) mentre non è molto performante su bounding box di piccole dimensioni.
 
 Inoltre performa significativamente male sull'entità "Room Decor", probabilmente dovuto alla generalità del termine:
+
 ![[Pasted image 20240306010529.png]]
 
 ## Alcuni esempi di valutazione di kosmos
@@ -222,34 +245,49 @@ Ho inoltre sviluppato un piccolo programma python che utilizza la libreria Compu
 Di seguito alcuni esempi interessanti di errori:
 
 ![[Pasted image 20240306010916.png]]
+
 Un fatto che emergeva già dalla valutazione numerica era la difficoltà del modello di individuare le sedie:
+
 ![[Pasted image 20240306011049.png]]
 
 Come si può vedere, vengono spesse confuse
 Probabilmente complice il fatto che le sedie sono spesso in secondo piano, oppure si trovano dietro ai tavoli o ad altri oggetti. Sono anche mediamente più piccole di altri oggetti.
+
 ![[Pasted image 20240306012351.png]]
+
 ![[Pasted image 20240306011857.png]]
+
 ![[Pasted image 20240306011207.png]]
 
 ### Bounding box piccoli
 Per come è satato addestrato kosmos, tende a dare un bounding box "no matter what". Questo, accoppiato con la scarsa capacità di individuare oggetti piccoli, evidenzia un netto limite, e spesso specialmente per oggetti piccoli, il bounding box è totalmente sbagliato e spesso associato al pavimento o al muro.
+
 ![[Pasted image 20240306011524.png]]
 
 ## Oggetti parzialmente nell'immagine
 Un chiaro limite del dataset però questa volta, per via della sua natura generativa a partire da diversi orientamenti e posizioni, è quello di avere molti oggetti parzialmente nell'immagine o orientati in modo tale da renderli difficile da riconoscere. È spesso il caso dei dipinti:
 ![[Pasted image 20240306012128.png]]
+
 ![[Pasted image 20240306012104.png]]
+
 Che sono spesso classificati male.
 Ma è anche il caso di altri oggetti:
+
 ![[Pasted image 20240306012207.png]]
+
 Questo può sicuramente essere visto come un limite del dataset, ma chiaramente evidenzia l'incapacità di kosmos nell'inferire l'entità da una vista parziale dell'oggetto.
 
 ## Evaluation su nuovo dataset
 
+
 ![[Pasted image 20240306094153.png]]
+
 Il nuovo dataset presenta una serie più numerosa di entità sia per numero generale che per varietà.
 La performance generale è calata dal 52% al 48%. Bisogna però tenere anche conto del fatto che mediamente il nuovo dataset ha bounding box di dimensione minore.
 Media dimensioni bounding box dataset vecchio:
+
 ![[Pasted image 20240306100512.png]]
+
 Media dimensione bounding box dataset nuovo:
+
 ![[Pasted image 20240306100450.png]]
