@@ -207,3 +207,40 @@ def eval_instance(df_row, debug=False):
 Questo computando alcune statistiche sull'operazione di evaluation fatta, questi sono i risultati:
 
 ![[Pasted image 20240306005255.png]]
+I risultati sono di un'accuracy totale del 51%.
+Da notare alcuni fatti interessanti:
+1. L'overlapping index è notevolmente maggiore del 50% per le entità per cui è stato fatto un match corretto
+2. L'overlapping index è notevolmente basso per le entità giudicate non correttamente
+
+Inoltre se la cava notevolmente meglio su bounding box molto grandi (ergo quando l'oggetto è ben visibile) mentre non è molto performante su bounding box di piccole dimensioni.
+
+Inoltre performa significativamente male sull'entità "Room Decor", probabilmente dovuto alla generalità del termine:
+![[Pasted image 20240306010529.png]]
+
+## Alcuni esempi di valutazione di kosmos
+
+Ho inoltre sviluppato un piccolo programma python che utilizza la libreria Computer Vision di python per esaminare le istanze in cui Kosmos ha sbagliato, disegnando il bounding box target e quello invece riportato da kosmos.
+Di seguito alcuni esempi interessanti di errori:
+
+![[Pasted image 20240306010916.png]]
+Un fatto che emergeva già dalla valutazione numerica era la difficoltà del modello di individuare le sedie:
+![[Pasted image 20240306011049.png]]
+
+Come si può vedere, vengono spesse confuse
+Probabilmente complice il fatto che le sedie sono spesso in secondo piano, oppure si trovano dietro ai tavoli o ad altri oggetti. Sono anche mediamente più piccole di altri oggetti.
+![[Pasted image 20240306012351.png]]
+![[Pasted image 20240306011857.png]]
+![[Pasted image 20240306011207.png]]
+
+### Bounding box piccoli
+Per come è satato addestrato kosmos, tende a dare un bounding box "no matter what". Questo, accoppiato con la scarsa capacità di individuare oggetti piccoli, evidenzia un netto limite, e spesso specialmente per oggetti piccoli, il bounding box è totalmente sbagliato e spesso associato al pavimento o al muro.
+![[Pasted image 20240306011524.png]]
+
+## Oggetti parzialmente nell'immagine
+Un chiaro limite del dataset però questa volta, per via della sua natura generativa a partire da diversi orientamenti e posizioni, è quello di avere molti oggetti parzialmente nell'immagine o orientati in modo tale da renderli difficile da riconoscere. È spesso il caso dei dipinti:
+![[Pasted image 20240306012128.png]]
+![[Pasted image 20240306012104.png]]
+Che sono spesso classificati male.
+Ma è anche il caso di altri oggetti:
+![[Pasted image 20240306012207.png]]
+Questo può sicuramente essere visto come un limite del dataset, ma chiaramente evidenzia l'incapacità di kosmos nell'inferire l'entità da una vista parziale dell'oggetto.
