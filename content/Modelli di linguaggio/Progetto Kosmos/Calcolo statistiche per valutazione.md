@@ -454,6 +454,21 @@ Altre operazioni su questo dataset sono:
 3. troncare i valori al quarto decimale
 
 ```python
+# Create a DataFrame from the list of calculated statistics
+stats_df = pd.DataFrame(entity_stats)
+
+# Convert all numeric columns to float
+stats_df = stats_df.apply(pd.to_numeric, errors='ignore')
+# Sort the DataFrame by the 'Number of Occurrences' column in descending order
+stats_df = stats_df.sort_values(by='Number of Occurrences', ascending=False)
+
+# Export the DataFrame to a CSV file
+stats_df.to_csv("entity_statistics_with_std_rounded.csv", index=False, float_format='%.4f')
+```
+
+## File completo
+
+```python
 import pandas as pd
 import numpy as np
 
