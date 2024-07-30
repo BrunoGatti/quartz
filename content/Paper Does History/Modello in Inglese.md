@@ -1,0 +1,2 @@
+Per rendere questo paper più adatto ad un contesto internazionale è opportuno confrontare Dialogue Model anche con un modello in inglese.
+Questo modello sarà comunque lo stesso LLaMA2chat addestrato con dataset balanced + varianti sintattiche di posso eseguirlo ma tradotto in inglese

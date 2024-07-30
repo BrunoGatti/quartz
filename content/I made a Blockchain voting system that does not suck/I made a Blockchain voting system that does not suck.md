@@ -78,7 +78,7 @@ And this is still not enough!
 
 ### There are still tons of issues
 Namely we still don't know how to handle voting privacy, anonimity, vote integrity, we still can't give the user a verifiable proof of his vote.
-And here's why blockchain cold be actually pretty usefull.
+And here's why blockchain cold be actually pretty useful.
 
 ## Blockchain voting systems (and why they suck)
 If you've been living under a rock for the past ten years, blockchain is a technology that's been around for a decade or so, invented by Satoshi Nakamoto and proposed in [this historic paper](https://bitcoin.org/bitcoin.pdf).
@@ -120,6 +120,20 @@ The flow of a voting operation will be as such:
 
 Here's a graph to illustrate the voting process
 ![[Pasted image 20240207154059.png]]
+
+## What ifs and FAQs
+### what if the user stays in the cabin?
+The vote can be cast only if there's a token inside the cabin, just restarting the software of the voting booth isn't enough to cast a vote
+
+### What if the user does not vote and leaves
+The officials in charge will be able to see that the person didn't send the ballot because the machine's balance will be "1" even after the person left. The official will proceed with revoking the token to the machine, and a new person can vote.
+
+### Wait a minute, can i just download the blockchain ledger and see all the votes in real time?
+No, that's because the votes will be encrypted. Unless the central authority (which in case of the political elections will be the prime minister) releases the decryption key. Therefore the security of the vote is outsourced to the prime minister, leaving the system to be less vulnerable.
+
+### What if the user wants to be sure of its vote?
+Once the vote has been cast there's no way of checking who you voted, just like in the real elections, there's no way you would just shove your hand inside the ballot box and fish out your ballot to verify.
+That being said the transaction hash of the voting transaction is an incrontrovertible proof that the vote has been succesfully cast.
 
 ## This system does not suck
 so again, we solved many all of the issues that were proposed at the beginning of this article, and while yes, we did compromise on the utopia of voting from home we were able to implement a system that is far better than today's voting process.
