@@ -101,7 +101,7 @@ So i plotted it to find out if there actually was a correlation between those va
 
 ![[plot 1.html]]
 
-And there obviously is. To view a more in depth analysis of this correlation see: [[Kosmos 2 lavoro svolto finora]]
+And there obviously is. To view a more in depth analysis of this correlation see: [[Progetto WMIR completo]]
 
 ## The code
 

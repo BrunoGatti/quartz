@@ -7,4 +7,4 @@ Di seguito troverete un indice esaustivo degli argomenti trattati nel progetto:
 - [[Creazione Dataset alpha]]
 - [[evaluation|Una descrizione di come verrà effettuate l'evaluation del modello]]
 - [[Presentazione 28 Dic]]
-- [[Kosmos 2 lavoro svolto finora]]
+- [[Progetto WMIR completo]]

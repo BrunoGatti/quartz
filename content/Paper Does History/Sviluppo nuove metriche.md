@@ -1,0 +1,1 @@
+Occorre sviluppare nuove metriche per la validazione manuale, specialmente per quanto riguarda l'espressione delle preferenze da parte degli annotatori, che fino ad ora potevano solamente esprimere preferenze tra due opzioni.
