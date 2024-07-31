@@ -1,0 +1,22 @@
+{
+	"nodes":[
+		{"id":"9a428ed1b4d014ff","type":"group","x":-530,"y":-340,"width":1060,"height":680,"label":"Nei prossimi giorni"},
+		{"id":"5df9c45314c39370","type":"text","text":"prendi test set e vedi quali tradurre","x":-510,"y":-320,"width":250,"height":120},
+		{"id":"d8850b802f223056","type":"text","text":"Vedi come tirare su Vicuna.","x":-115,"y":-320,"width":250,"height":120},
+		{"id":"f7c5da94b749daa6","type":"text","text":"Vicuna zero shot baseline","x":-115,"y":-79,"width":250,"height":119},
+		{"id":"1e059cb6d55a0ee7","type":"text","text":"niente valutazione solo genrazione","x":260,"y":-103,"width":250,"height":168},
+		{"id":"b479a0032053d0ab","type":"text","text":"Tradurre dati e ottieni dataset","x":-510,"y":-79,"width":250,"height":119},
+		{"id":"6113e283d7ebfc8a","type":"text","text":"fai duplicato della cartella di llama 2 chat su kronos \"with projector\"","x":-510,"y":160,"width":250,"height":160},
+		{"id":"4be6d6396dd26639","type":"text","text":"sia inglese che italiano","x":-115,"y":189,"width":250,"height":103},
+		{"id":"af2532601f0aa33d","type":"text","text":"prendi test set e vedi quali tradurre","x":-510,"y":720,"width":250,"height":120},
+		{"id":"7bcdee7d170cae54","x":24,"y":696,"width":250,"height":60,"type":"text","text":"Test file inglese MM_IGLU"}
+	],
+	"edges":[
+		{"id":"271f5e6cb1d5be40","fromNode":"5df9c45314c39370","fromSide":"bottom","toNode":"b479a0032053d0ab","toSide":"top"},
+		{"id":"4c0c090aec5e3bf3","fromNode":"d8850b802f223056","fromSide":"bottom","toNode":"f7c5da94b749daa6","toSide":"top"},
+		{"id":"bbb74c9ee4206ec2","fromNode":"f7c5da94b749daa6","fromSide":"right","toNode":"1e059cb6d55a0ee7","toSide":"left"},
+		{"id":"28ce1e99aa296f63","fromNode":"b479a0032053d0ab","fromSide":"right","toNode":"f7c5da94b749daa6","toSide":"left"},
+		{"id":"7b6856bb88e0f7c2","fromNode":"6113e283d7ebfc8a","fromSide":"right","toNode":"4be6d6396dd26639","toSide":"left"},
+		{"id":"92849efa54da20da","fromNode":"af2532601f0aa33d","fromSide":"right","toNode":"7bcdee7d170cae54","toSide":"left"}
+	]
+}
