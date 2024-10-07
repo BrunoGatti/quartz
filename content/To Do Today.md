@@ -1,12 +1,11 @@
-1. 3h letture per progetto di ricerca
-2. contatta zanzotto/Ranaldi pensa a cosa dire.
-3. bunny 3h
-	- prova inferenza, addestramento
-	- prova di tutto
-4.  ielts 
+1. 
 
-To do today 9/6 
-1. scrivi bozza progetto di ricerca
-2. scrivi richiesta lettere di raccomandazione
+1. intersenzione: frame verbatlas srl e il sinset verbale di wsd
 
+2. 
+
+
+
+esempi di pagine che usano WN come synset di wsd e babelnet come synset di wsd.
+Guardo anche se hanno diversità su wikilinks
 
