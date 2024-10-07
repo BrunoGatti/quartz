@@ -6,8 +6,8 @@ title: Bruno Gatti's Website
 Scimmia antropomorfa, dottore in informatica magistrale ed ex studente presso l' [Università degli Studi Roma Tor Vergata](https://web.uniroma2.it/)
 ## 💾 A Cosa sto lavorando ultimamente:
 
-#### Ad un paper che presenterò a [COLING 2025](https://coling2025.org/) riguardo human-robot interaction
-1. [[Flusso di lavoro.canvas|Qui]] un diagramma di flusso sul lavoro da fare
+#### ⚽️ Ad un algoritmo di machine learning che mi faccia finalmente vincere il fantacalcio dopo anni di sofferenze
+
 #### 💻 Ad un tutoraggio per [il corso di programmazione tenuto dal professor Rossi](http://www.informatica.uniroma2.it/f0?fid=220&srv=0&os=0&id=PR):
 1. Link al [github del professore](https://github.com/glucatv)
 2. [Github mio](https://github.com/BrunoGatti/eserciziProgrammazione)
