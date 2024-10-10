@@ -2,7 +2,7 @@
 title: Bruno Gatti's Website
 ---
 ## WHOAMI [📷](https://www.instagram.com/bruno.gatt)
-Provaprova
+
 Scimmia antropomorfa, dottore in informatica magistrale ed ex studente presso l' [Università degli Studi Roma Tor Vergata](https://web.uniroma2.it/)
 ## 💾 A Cosa sto lavorando ultimamente:
 
