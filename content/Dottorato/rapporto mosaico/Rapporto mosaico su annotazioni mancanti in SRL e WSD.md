@@ -9,6 +9,7 @@ Questo è un breve rapporto su queste lacune.
 | French   | 17                | 0                 | 13                                  | 0                                          | 34                      |
 | Spanish  | 9                 | 9                 | 14                                  | 16542                                      | 17192                   |
 |          | 2757              | 239               | 76                                  | 17539                                      | 17539                   |
+|          |                   |                   |                                     |                                            |                         |
 nella colonna "Pages with no SRL", "Pages with no WSD" e "Pages with both SRL and WSD missing" abbiamo delle pagine dove l'oggetto relativo all'annotazione WSD e SRL è completamente mancante. Nella colonna "Pages with unknown annotation not present" invece la situazione è un po' più complicata perché il mancato ritiro dell'informazione non è un "None Type", quindi l'oggetto "SRL" e "WSD" è presente ma magari vuoto.
 Intanto allegato a questo rapporto trovate i file con i nomi delle pagine per ognuna delle colonne evidenziate.
 

@@ -241,6 +241,7 @@ Anche se chiaramente abbiamo una corrispondenza tra i due
 ## Analisi di match tra Verbatlas SRL e WSD
 
 Alla fine ho sviluppato un algoritmo che mi ha permesso di analizzare ogni singolo predicato.
+Lo script è "analyze_export_debug.py"
 
 Si parte da una riga del file export.txt
 
@@ -877,3 +878,25 @@ Lo script si chiama "lista_pagine.py" e prende in input export.txt (o meglio la 
 
 ![[Pasted image 20241007131039.png]]
 
+
+## Analisi solo inglese
+Purtroppo anche analizzando i match tra wsd e srl stiamo sotto il 65 percento
+![[Pasted image 20241008123314.png]]
+![[Pasted image 20241008120547.png]]
+
+### Statistiche dei frame
+Abbiamo un file adesso chiamato frame_stats.txt che contiene tutti i frame di verbatlas ed i frame con i quali sono stati confusi maggiormente
+
+![[Pasted image 20241008130733.png]]
+realizzare una confusion matrix: confusion_matrix.py
+
+Esempio: nella pagina dei Ramones inglese Know è stato confuso con agree_accept
+
+```
+Page: Ramones| en, Token Span: (19, Synset: know%2:31:06::, Confused with Frame: AGREE_ACCEPT
+Page: Ramones| en, Token Span: (21, Synset: know%2:31:06::, Confused with Frame: AGREE_ACCEPT
+Page: Ramones| en, Token Span: (14, Synset: meet%2:41:01::, Confused with Frame: MEET
+Page: Ramones| en, Token Span: (24, Synset: know%2:31:06::, Confused with Frame: AGREE_ACCEPT
+```
+
+![[Pasted image 20241008153516.png]]
