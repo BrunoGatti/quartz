@@ -1,0 +1,102 @@
+/* Custom colors */
+.red {
+    color: red;
+}
+
+.blue {
+    color: blue;
+}
+
+.green {
+    color: green;
+}
+
+.yellow {
+    color: yellow;
+}
+
+.orange {
+    color: orange;
+}
+
+.purple {
+    color: purple;
+}
+
+.pink {
+    color: pink;
+}
+
+/* Bold text */
+.bold {
+    font-weight: bold;
+}
+
+/* Italic text */
+.italic {
+    font-style: italic;
+}
+
+/* Underlined text */
+.underline {
+    text-decoration: underline;
+}
+
+/* Strikethrough text */
+.strikethrough {
+    text-decoration: line-through;
+}
+
+/* Highlight text with background color */
+.bg-yellow {
+    background-color: yellow;
+    padding: 0.2em;
+    border-radius: 4px;
+}
+
+.bg-blue {
+    background-color: lightblue;
+    padding: 0.2em;
+    border-radius: 4px;
+}
+
+.bg-green {
+    background-color: lightgreen;
+    padding: 0.2em;
+    border-radius: 4px;
+}
+
+.bg-gray {
+    background-color: lightgray;
+    padding: 0.2em;
+    border-radius: 4px;
+}
+
+/* Glowing effect for text */
+.glow {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff;
+}
+
+/* Rotating text effect */
+.rotate {
+    display: inline-block;
+    transform: rotate(10deg);
+}
+
+/* Spacing between letters */
+.spaced {
+    letter-spacing: 3px;
+}
+
+/* Gradient text effect */
+.gradient {
+    background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+/* Shadow effect for text */
+.shadow {
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
