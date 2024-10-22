@@ -899,4 +899,8 @@ Page: Ramones| en, Token Span: (14, Synset: meet%2:41:01::, Confused with Frame:
 Page: Ramones| en, Token Span: (24, Synset: know%2:31:06::, Confused with Frame: AGREE_ACCEPT
 ```
 
-![[Pasted image 20241008153516.png]]
+![[Pasted image 20241008153516.png]](analyze_export_debug.py)
+
+
+## conta quante volte sbaglia (quante volte non c'è match)
+devo fare un'analisi a campione.
