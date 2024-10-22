@@ -1,9 +1,11 @@
 ---
 publish: false
+draft: true
 ---
 prova
 
 ## Compatibilità tra SRL e WSD
+prova
 SRL è gestito con VERBATLAS ha frame tipo questo
 
 ![[Pasted image 20240924113028.png]]
