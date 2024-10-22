@@ -1,0 +1,7 @@
+{
+	"nodes":[
+		{"id":"6888f4079e80e76c","x":-220,"y":-220,"width":400,"height":400,"type":"file","file":"To Do Today.md"},
+		{"id":"0ee92f13293b2567","x":-200,"y":260,"width":400,"height":400,"type":"file","file":"Appunti di statistica/Derivate Parziali e Gradiente.md"}
+	],
+	"edges":[]
+}
