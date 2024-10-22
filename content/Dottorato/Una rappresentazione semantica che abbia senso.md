@@ -1,6 +1,7 @@
 ---
 title: Una rappresentazione semantica che abbia senso
-publish: "True"
+publish: true
+draft:
 ---
 
 
