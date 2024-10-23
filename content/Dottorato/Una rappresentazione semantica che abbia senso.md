@@ -1,7 +1,7 @@
 ---
 title: Una rappresentazione semantica che abbia senso
 publish: true
-draft:
+draft: false
 ---
 
 
