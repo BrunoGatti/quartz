@@ -1,3 +1,7 @@
+---
+publish: true
+---
+
 ## Introduzione al problema
 
 Il lavoro si inserisce nel contesto di creare agenti che operino in ambienti domestici.
