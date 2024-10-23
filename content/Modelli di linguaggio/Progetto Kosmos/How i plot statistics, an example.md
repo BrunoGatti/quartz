@@ -1,3 +1,7 @@
+---
+publish: true
+---
+
 This is an example of how i plot statistics using plotly, pandas and numpy.
 
 ## The data i'm plotting

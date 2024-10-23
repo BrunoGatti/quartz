@@ -1,3 +1,7 @@
+---
+publish: true
+---
+
 ## Passo 1: Data Gathering
 Il processo di Data Gathering è stato fatto dai ragazzi di triennale. Hanno estratto una serie di ambienti digitali usando procThor e mi hanno fornito una serie di immagini nonchè informazioni sugli ogetti e le loro posizioni all'interno delle immagini.
 Ci sono più oggetti all'interno di ogni immagine, e più immagini (corrispondenti a diverse posizioni dell'agente) per ogni ambiente.

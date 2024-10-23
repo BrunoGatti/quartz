@@ -1,3 +1,7 @@
+---
+publish: true
+---
+
 Questo script prende in input il file "shuffled_output_data.csv", che è il file input della fase di evaluation, e restituisce un file che contiene come nome dell'entità  le sue lexical references.
 Il file quindi risulta essere molto più massiccio di "shuffled_output_data.csv". Verrà, infatti, troncato alle prime 10k righe.
 

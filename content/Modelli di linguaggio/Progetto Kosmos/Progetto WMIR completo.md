@@ -1,3 +1,7 @@
+---
+publish: true
+---
+
 ## Come funziona il modello
 
 ![[MicrosoftTeams-image 1.png]]

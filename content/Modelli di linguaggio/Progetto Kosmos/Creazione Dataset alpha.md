@@ -1,3 +1,7 @@
+---
+publish: true
+---
+
 Kosmos prende in input un testo (il prompt) e un'immagine
 
 ```python
