@@ -1,3 +1,7 @@
+---
+publish: true
+---
+
 Questo documento spiega come sono state calcolate le statistiche riguardanti la valutazione zero shot del modello Kosmos2 su vari dataset.
 
 Alla fine della fase di evaluation, ho ottenuto un file chiamato "zero_shot_final.csv".

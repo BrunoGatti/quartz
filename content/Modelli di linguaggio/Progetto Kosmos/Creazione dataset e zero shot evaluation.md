@@ -1,3 +1,7 @@
+---
+publish: true
+---
+
 Qui di seguito riporto il processo e il codice utilizzato per creare il dataset su cui poi verrà valutato il modello kosmos2.
 
 Il dataset è stato creato a partire da una serie di ambienti generati proceduralmente in ProcThor.
