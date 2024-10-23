@@ -1,6 +1,6 @@
 ---
-publish: false
-draft: true
+publish: true
+draft: false
 ---
 prova
 
