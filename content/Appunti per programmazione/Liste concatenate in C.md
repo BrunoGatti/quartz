@@ -1,3 +1,7 @@
+---
+publish: true
+---
+
 Le liste concatenate sono una struttura dati.
 L'idea è quella di inserire i dati concatenandoli gli uni con gli altri tipo così
 ```mermaid

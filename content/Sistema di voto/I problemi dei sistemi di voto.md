@@ -1,3 +1,7 @@
+---
+publish: true
+---
+
 Il voto online è una problematica che da anni viene affrontata in diversi ambiti.
 È un'idea che, se raggiunta, porterebbe ad una riduzione ai minimi termini dei costi di logistica, all'immediatezza del conteggio dei voti ed all'aumento dell'affluenza alle urne.
 Chiaramente non è tutto oro ciò che luccica.

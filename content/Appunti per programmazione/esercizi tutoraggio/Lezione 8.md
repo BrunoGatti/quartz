@@ -1,3 +1,7 @@
+---
+publish: true
+---
+
 ## Easy
 
 #### Esercizio 1 easy

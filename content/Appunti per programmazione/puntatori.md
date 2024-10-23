@@ -1,3 +1,7 @@
+---
+publish: true
+---
+
 Il puntatore è una variabile che punta ad un altra.
 Che vuol dire?
 

@@ -1,3 +1,7 @@
+---
+publish: true
+---
+
 Il merge sort è un algoritmo [[Ricorsione|ricorsivo]] di sorting (ordina una lista di elementi).
 Molto veloce.
 Molto usato.

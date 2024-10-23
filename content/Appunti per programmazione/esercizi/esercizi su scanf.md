@@ -1,3 +1,7 @@
+---
+publish: true
+---
+
 Scanf è una delle funzioni di standard input outpu, esattamente come printf. Ci permette di prendere input dall'utente.
 
 ## ESERCIZIO 1

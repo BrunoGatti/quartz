@@ -1,3 +1,7 @@
+---
+publish: true
+---
+
 ## INDICE 
 
 ### Algoritmi e concetti di base

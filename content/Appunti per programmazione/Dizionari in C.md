@@ -1,3 +1,7 @@
+---
+publish: true
+---
+
 Fino ad ora abbiamo visto che una delle cose più costose è sempre stata la ricerca.
 Cercare un elemento da qualche parte è sempre difficile.
 Abbiamo visto che per cercarlo in una lista disordinata ci mettiamo al caso pessimo la lunghezza della stringa: $O(n)$

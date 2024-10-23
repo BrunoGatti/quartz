@@ -1,3 +1,7 @@
+---
+publish: true
+---
+
 Le struct sono un modo per definire "strutture" in C.
 Che significa?
 Praticamente noi in C siamo "legati" ai tipi di dato standard che abbiamo visto finora. Gli interi, i float, i char etc..

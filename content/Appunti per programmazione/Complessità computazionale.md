@@ -1,3 +1,7 @@
+---
+publish: true
+---
+
 Ovvero, quanto ci mette il mio programma a finire (più o meno) e quanto spazio occupa
 
 ## Complessità temporale: quanto ci mette?

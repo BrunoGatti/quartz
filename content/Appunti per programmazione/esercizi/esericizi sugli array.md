@@ -1,3 +1,7 @@
+---
+publish: true
+---
+
 Gli array sono delle strutture dati molto basilari in C. Li potete vedere come una serie di elementi uno di fila all'altro TUTTI DELLO STESSO TIPO.
 Gli array, in un certo senso, li potete visualizzare come le liste in python.
 ```C

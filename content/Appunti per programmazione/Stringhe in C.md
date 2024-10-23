@@ -1,3 +1,7 @@
+---
+publish: true
+---
+
 In C le stringhe sono gestiti tramite un tipo chiamato "char".
 "char" definisce un carattere.
 A differenza di python in cui ad esempio andavamo a definire le stringhe come un tipo vero e proprio, in C, abbiamo il carattere come tipo.
