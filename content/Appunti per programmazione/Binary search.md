@@ -1,3 +1,7 @@
+---
+publish: true
+---
+
 La ricerca binaria, o binary search è un algoritmo per cercare elementi su una lista ordinata.
 
 >[!note] problema:

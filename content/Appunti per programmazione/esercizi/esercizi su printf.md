@@ -1,3 +1,7 @@
+---
+publish: true
+---
+
 Printf è la prima funzione che si impara.
 Stampa cose a video.
 

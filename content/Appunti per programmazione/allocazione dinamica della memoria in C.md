@@ -1,3 +1,7 @@
+---
+publish: true
+---
+
 Per ora abbiamo sempre dichiarato le variabili e gli array a priori. Ad esempio, se vogliamo definire un array, dobbiamo sempre e comunque dichiarare prima la sua dimensione:
 
 ```C

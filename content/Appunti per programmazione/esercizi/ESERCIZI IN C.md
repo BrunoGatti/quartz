@@ -1,3 +1,7 @@
+---
+publish: true
+---
+
 ## (che dovresti essere in grado di fare arrivato a questo punto della tua vita)
 
 Se non sai ancora compilare un programma in c, leggi [[C|qui]]

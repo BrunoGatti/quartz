@@ -1,3 +1,7 @@
+---
+publish: true
+---
+
 La ricorsione sono funzioni che chiamano loro stesso.
 Ma perchè dovremmo fare mai una cosa del genere?
 

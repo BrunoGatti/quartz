@@ -1,3 +1,7 @@
+---
+publish: true
+---
+
 ## Esercizio 1:
 
 Fate un programma in C che prende in input un numero non specificato di punti del piano cartesiano.

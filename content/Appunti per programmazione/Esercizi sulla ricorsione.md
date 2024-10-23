@@ -1,3 +1,7 @@
+---
+publish: true
+---
+
 ## Esercizio 0
 
 Scrivere una funzione ricorsiva che trova il massimo in una lista.

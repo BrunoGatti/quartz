@@ -1,3 +1,7 @@
+---
+publish: true
+---
+
 Wsl è un sottosistema Linux per Windows.
 Questo significa che, sostanzialmente, potete lanciare comandi linux sul vostro sistema Windows DAL vostro sottosistema Linux.
 
