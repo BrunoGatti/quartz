@@ -1,3 +1,7 @@
+---
+publish: true
+---
+
 Kosmos 2 è un [[Modello di linguaggio multimodale|Large Language model multimodale]] che introduce, rispetto al suo predecessore (Kosmos1) la possibilità di fare il grounding tra il testo e l'immagine.
 Questo permette al modello di espletare una serie di task molto variegate come il "phrase grounding" (data una frase trova le entità di cui si parla nell'immagine), l' "image captioning" (data un immagine genera una descrizione testuale della stessa) ed altre.
 Nell'ambito del [[Progetto Web Mining|Progetto]] che abbiamo introdotto precedentemente questo permetterebbe non solo di sviluppare un sistema software che è in grado di individuare oggetti negli ambienti, ma anche di rispondere a domande sugli stessi, fornire una descrizione degli ambienti, e in generale, di espletare al meglio le sue funzioni.
