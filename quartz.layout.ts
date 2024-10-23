@@ -15,14 +15,6 @@ export const sharedPageComponents: SharedLayout = {
   }),
 }
 
-export default function MyLayout() {
-  return (
-    <div>
-      <h1>My Custom Canvas Page</h1>
-      {Component.CanvasDisplay({ canvasWidth: 1000, canvasHeight: 800 })}
-    </div>
-  )
-}
 
 // components for pages that display a single page (e.g. a single note)
 export const defaultContentPageLayout: PageLayout = {
