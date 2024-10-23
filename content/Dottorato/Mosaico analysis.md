@@ -1,6 +1,5 @@
 ---
 publish: true
-draft: false
 ---
 prova
 
