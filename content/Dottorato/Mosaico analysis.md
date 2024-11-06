@@ -906,6 +906,13 @@ Page: Ramones| en, Token Span: (24, Synset: know%2:31:06::, Confused with Frame:
 
 ![[Pasted image 20241008153516.png]](analyze_export_debug.py)
 
+Per ottenere stats.txt posso usare lo script 
+
+```python
+python analyze_export_debug.py
+```
+
+Questo ci da il file ordinato secondo ordine crescente di confusione.
 
 ## conta quante volte sbaglia (quante volte non c'è match)
 devo fare un'analisi a campione.

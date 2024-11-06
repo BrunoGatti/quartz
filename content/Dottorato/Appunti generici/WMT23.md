@@ -1,0 +1,1 @@
+WMT23 è una "Metrics Sharted Task" che valuta diverse metriche di valutazione di machine translation. Il ranking è basato sulla correlazione con il giudizio umano come gold standard e i risultati di questa meta-valutazione guidano la comunità scientifica allo sviluppo di nuove e più efficaci metriche nell'ambito della machine translation.

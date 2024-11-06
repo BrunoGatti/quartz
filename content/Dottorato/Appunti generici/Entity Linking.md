@@ -1,0 +1,4 @@
+Entity linking è l'insieme di una serie di task che includono "Named Entity Disambiguation/Recognition" e "Wikification"
+
+**Named Entity Disambiguation** è il task di collegare entità menzionate in un testo ad una base di conoscenza mentre **Wikification** è il task di annotare automaticamente il testo linkando i suoi frammenti rilevanti di testo all'appropriato articolo wikipedia.
+[Mihalcea and Csomai (2007) ](https://web.eecs.umich.edu/~mihalcea/papers/mihalcea.cikm07.pdf) sono stati i primi a definire e affrontare il task di Wikification. Nel loro approccio hanno disambiguato ogni parola in una frase separatamente utilizzando il contesto nella quale essa appare.
