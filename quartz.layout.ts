@@ -10,14 +10,13 @@ export const sharedPageComponents: SharedLayout = {
   footer: Component.Footer({
     links: {
       GitHub: "https://github.com/BrunoGatti",
-      "Instagram": "https://www.instagram.com/bruno.gatt/",
-      "Linkedin": "https://www.linkedin.com/in/bruno-gatti-044554269/"
+      Instagram: "https://www.instagram.com/bruno.gatt/",
+      Linkedin: "https://www.linkedin.com/in/bruno-gatti-044554269/"
     },
   }),
 }
 
-
-// components for pages that display a single page (e.g. a single note)
+// components for pages that display a single page (e.g., a single note)
 export const defaultContentPageLayout: PageLayout = {
   beforeBody: [
     Component.Breadcrumbs(),
@@ -39,16 +38,21 @@ export const defaultContentPageLayout: PageLayout = {
   ],
 }
 
-// components for pages that display lists of pages  (e.g. tags or folders)
-export const defaultListPageLayout: PageLayout = {
-  beforeBody: [Component.Breadcrumbs(), Component.ArticleTitle(), Component.ContentMeta()],
-  header: [ProfilePicture()],
-  left: [
-    Component.PageTitle(),
-    Component.MobileOnly(Component.Spacer()),
-    Component.Search(),
-    Component.Darkmode(),
-    Component.DesktopOnly(Component.Explorer()),
-  ],
-  right: [],
+// components for pages that display lists of pages (e.g., tags or folders)
+export const defaultListPageLayout: PageLayout = (ctx) => {
+  const isIndexPage = ctx.fileSlug === "index";
+
+  return {
+    beforeBody: [Component.Breadcrumbs(), Component.ArticleTitle(), Component.ContentMeta()],
+    header: isIndexPage ? [ProfilePicture()] : [],
+    left: [
+      Component.PageTitle(),
+      Component.MobileOnly(Component.Spacer()),
+      Component.Search(),
+      Component.Darkmode(),
+      Component.DesktopOnly(Component.Explorer()),
+    ],
+    right: [],
+  };
 }
+
