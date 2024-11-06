@@ -6,12 +6,12 @@ interface Options {
 }
 
 const defaultOptions: Options = {
-  imageUrl: "./assets/profile.jpg",  // Relative path to the image
+  imageUrl: "./assets/profile.jpg", // Default image path
   altText: "Profile Picture",
 };
 
 const ProfilePicture: QuartzComponentConstructor = (userOpts?: Partial<Options>) => {
-  const opts = { ...defaultOptions, ...userOpts };
+  const opts = { ...defaultOptions, ...userOpts };  // Merge user options with defaults
 
   function Component(props: QuartzComponentProps) {
     return (
