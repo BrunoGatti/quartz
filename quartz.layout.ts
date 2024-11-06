@@ -5,7 +5,7 @@ import * as Component from "./quartz/components"
 // components shared across all pages
 export const sharedPageComponents: SharedLayout = {
   head: Component.Head(),
-  header: [],
+  header: [ProfilePicture({ imageUrl: "/quartz/assets/profile.jpg" })],
   afterBody: [],
   footer: Component.Footer({
     links: {
@@ -42,7 +42,7 @@ export const defaultContentPageLayout: PageLayout = {
 // components for pages that display lists of pages  (e.g. tags or folders)
 export const defaultListPageLayout: PageLayout = {
   beforeBody: [Component.Breadcrumbs(), Component.ArticleTitle(), Component.ContentMeta()],
-  header: [ProfilePicture({ imageUrl: "/quartz/assets/profile.jpg" })],
+  header: [],
   left: [
     Component.PageTitle(),
     Component.MobileOnly(Component.Spacer()),
