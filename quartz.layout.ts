@@ -44,7 +44,7 @@ export const defaultListPageLayout: PageLayout = (ctx) => {
 
   return {
     beforeBody: [Component.Breadcrumbs(), Component.ArticleTitle(), Component.ContentMeta()],
-    header: isIndexPage ? [ProfilePicture()] : [],
+    header: [ProfilePicture()],
     left: [
       Component.PageTitle(),
       Component.MobileOnly(Component.Spacer()),
