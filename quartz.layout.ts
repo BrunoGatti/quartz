@@ -4,7 +4,9 @@ import * as Component from "./quartz/components"
 // components shared across all pages
 export const sharedPageComponents: SharedLayout = {
   head: Component.Head(),
-  header: [],
+  header: [
+    `<img src="/assets/profile.jpg" alt="Profile Picture" style="width: 100px; height: auto; border-radius: 50%;" />`,
+  ],
   afterBody: [],
   footer: Component.Footer({
     links: {
