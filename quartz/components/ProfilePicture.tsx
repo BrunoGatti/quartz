@@ -6,7 +6,7 @@ interface Options {
 }
 
 const defaultOptions: Options = {
-  imageUrl: "quartz/assets/profile.jpg", // Default image path
+  imageUrl: "/quartz/assets/profile.jpg", // Default image path
   altText: "Profile Picture",
 };
 
