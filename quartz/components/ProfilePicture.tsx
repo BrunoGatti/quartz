@@ -6,7 +6,7 @@ interface Options {
 }
 
 const defaultOptions: Options = {
-  imageUrl: "/assets/profile.jpg",
+  imageUrl: "./assets/profile.jpg",
   altText: "Profile Picture",
 };
 
