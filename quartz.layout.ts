@@ -44,6 +44,7 @@ export const defaultListPageLayout: PageLayout = {
   beforeBody: [Component.Breadcrumbs(), Component.ArticleTitle(), Component.ContentMeta()],
   header: [],
   left: [
+    Component.ProfilePicture({ imageUrl: "/quartz/assets/profile.jpg" }),
     Component.PageTitle(),
     Component.MobileOnly(Component.Spacer()),
     Component.Search(),
