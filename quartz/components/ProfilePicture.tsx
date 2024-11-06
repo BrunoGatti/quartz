@@ -6,7 +6,7 @@ interface Options {
 }
 
 const defaultOptions: Options = {
-  imageUrl: "./assets/profile.jpg",
+  imageUrl: "./assets/profile.jpg",  // Relative path to the image
   altText: "Profile Picture",
 };
 
@@ -14,11 +14,6 @@ const ProfilePicture: QuartzComponentConstructor = (userOpts?: Partial<Options>)
   const opts = { ...defaultOptions, ...userOpts };
 
   function Component(props: QuartzComponentProps) {
-    // Check if the current page is the index page
-    if (props.filePath !== "index.md") {
-      return null; // Don't render if it's not the index page
-    }
-
     return (
       <img
         src={opts.imageUrl}
