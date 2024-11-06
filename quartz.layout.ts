@@ -5,7 +5,7 @@ import * as Component from "./quartz/components"
 // components shared across all pages
 export const sharedPageComponents: SharedLayout = {
   head: Component.Head(),
-  header: [ProfilePicture({ imageUrl: "./assets/profile.jpg" })],
+  header: [ProfilePicture({ imageUrl: "quartz/assets/profile.jpg" })],
   afterBody: [],
   footer: Component.Footer({
     links: {
