@@ -1,4 +1,5 @@
 import Content from "./pages/Content"
+import ProfilePicture from "./ProfilePicture"
 import TagContent from "./pages/TagContent"
 import FolderContent from "./pages/FolderContent"
 import NotFound from "./pages/404"
@@ -25,6 +26,7 @@ import CanvasDisplay from "./CanvasDisplay"
 export {
   ArticleTitle,
   Content,
+  ProfilePicture,
   TagContent,
   FolderContent,
   Darkmode,
