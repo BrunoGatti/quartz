@@ -1,5 +1,5 @@
 ---
-title: Bruno Gatti's Website
+title: BRUNO GATTI
 publish: true
 ---
 ## WHOAMI [📷](https://www.instagram.com/bruno.gatt)

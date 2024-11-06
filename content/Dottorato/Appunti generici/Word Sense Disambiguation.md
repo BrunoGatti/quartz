@@ -1,0 +1,2 @@
+Word sense disambiguation è il task di scegliere il giusto senso per una parola all'interno di un dato contesto.
+![Word Sense Disambiguation: Challenges & Future | BotPenguin](https://cdn.botpenguin.com/assets/website/Word_Sense_Disambiguation_0507cc626f.png)
