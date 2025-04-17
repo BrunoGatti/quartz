@@ -1,7 +1,7 @@
 ---
 publish: false
 ---
-
+é
 ## Compatibilità tra SRL e WSD
 
 SRL è gestito con VERBATLAS ha frame tipo questo
@@ -890,7 +890,7 @@ Purtroppo anche analizzando i match tra wsd e srl stiamo sotto il 65 percento
 ![[Pasted image 20241008120547.png]]
 
 ### Statistiche dei frame
-Abbiamo un file adesso chiamato frame_stats.txt che contiene tutti i frame di verbatlas ed i frame con i quali sono stati confusi maggiormente
+Abbiamo un file adesso chiamato frame_stats.txt che contiene tutti i frame di verbatlas ed i frame con i quali sono stati confusi maggiormente (stats.txt)
 
 ![[Pasted image 20241008130733.png]]
 realizzare una confusion matrix: confusion_matrix.py
@@ -916,3 +916,549 @@ Questo ci da il file ordinato secondo ordine crescente di confusione.
 
 ## conta quante volte sbaglia (quante volte non c'è match)
 devo fare un'analisi a campione.
+
+Lo script 
+
+```bash
+python examples_2.py | tee pages_with_mismatch.txt
+```
+
+Ci permette di generare un file data in input un frame di verbatlas che contiene tutte le pagine json che hanno un mismatch per quel frame
+
+
+```txt
+Page: Atlantic puffin| en
+  Predicate: LIGHT-VERB, Token Span: (4, 5), Synset: make%2:41:00::
+
+Page: Fidel Castro| en
+  Predicate: LIGHT-VERB, Token Span: (18, 19), Synset: make%2:41:00::
+
+Page: Fidel Castro| en
+  Predicate: LIGHT-VERB, Token Span: (23, 24), Synset: make%2:41:00::
+
+Page: Fidel Castro| en
+  Predicate: LIGHT-VERB, Token Span: (24, 25), Synset: make%2:41:00::
+
+Page: Fidel Castro| en
+  Predicate: LIGHT-VERB, Token Span: (5, 6), Synset: make%2:41:00::
+
+Page: Fidel Castro| en
+  Predicate: LIGHT-VERB, Token Span: (12, 13), Synset: make%2:41:00::
+
+Page: Fidel Castro| en
+  Predicate: LIGHT-VERB, Token Span: (22, 23), Synset: make%2:41:00::
+
+Page: Fidel Castro| en
+  Predicate: LIGHT-VERB, Token Span: (10, 11), Synset: make%2:41:00::
+
+Page: Fifth disease| en
+  Predicate: LIGHT-VERB, Token Span: (13, 14), Synset: make%2:41:00::
+
+Page: Palm Beach, Florida| en
+  Predicate: LIGHT-VERB, Token Span: (3, 4), Synset: make%2:41:00::
+
+Page: Palm Beach, Florida| en
+  Predicate: LIGHT-VERB, Token Span: (7, 8), Synset: make%2:41:00::
+
+Page: Grand Central Terminal| en
+  Predicate: LIGHT-VERB, Token Span: (34, 35), Synset: make%2:41:00::
+```
+
+
+Ho createo un'interfaccia che permette di navigare la pagina scelta con facilità dato il file sopra in input.
+
+```
+python page_interface_mismatch.py
+```
+
+Questa interfaccia prende in input il file "pages_with_mismatch.txt". Per ogni pagina è possibile vedere quali frasi hanno quel verbo che fa mismatch:
+
+![[Pasted image 20241113143312.png]]
+
+C'è l'opzione per scaricare la pagina.
+
+![[Pasted image 20241113143339.png]]
+
+Una volta fatto sarà possibile analizzare le frasi di mosaico che hanno quel mismatch.
+Il file viene salvato con un nome che matcha il nome della pagina, in questo caso per esempio la pagina "Savanna Samson" è stata scaricata come Savanna_Samson.json"
+
+A questo punto posso fare il display delle frasi:
+
+![[Pasted image 20241113143525.png]]
+
+
+## LAVORO per Lunedì 16 dicembre
+Prima di tutto devo calcolare il numero di esempi da far annotare.
+Il numero di confusioni totali è 2215647.
+Calcolate a partire dal file stats.txt usando questo semplice script (counting_confusions.py)
+
+Il risultato:
+
+```
+Frame: LIGHT, Confusions: 31596
+Frame: AUXILIARY, Confusions: 22096
+Frame: COPULA, Confusions: 16859
+Frame: MODAL, Confusions: 17102
+Frame: _, Confusions: 1058
+Frame: DISCOURSE, Confusions: 129
+Frame: MUST, Confusions: 308
+Frame: START, Confusions: 1
+Frame: SOLVE, Confusions: 1489
+...
+Frame: DIET, Confusions: 0
+Frame: CASTRATE, Confusions: 0
+Frame: PRETEND, Confusions: 0
+Frame: EMCEE, Confusions: 0
+
+Total Confusions Across All Frames: 2215647
+```
+
+Ora ho bisogno di tirare fuori per ogni frame un numero di esempi da far annotare che sia proporzionato al numero di confusioni.
+Un numero consono di esempi, considerando 500 esempi al giorno e una settimana di lavoro umano dovrebbe essere 500 x 7 = 3500 esempi. 
+Circa 2 millesimi di tutte le confusioni.
+
+Adesso mi serve un programma che dato ogni frame individua tanti esempi per quel frame quante confusioni diviso per 1000.
+Quindi ad esempio, per il frame "LIGHT-VERB" ne cercherà 31596 / 1000, cioè 31,6 arrotondate a 32.
+Ho aggiornato lo script (counting_confusions.py): adesso l'output contiene anche il numero di esempi previsti per ogni frame.
+
+```
+Frame: LOCATE-IN-TIME_DATE, Confusions: 18, Esempi da annotare: 1
+Frame: SIMPLIFY, Confusions: 5, Esempi da annotare: 1
+Frame: WARN, Confusions: 4, Esempi da annotare: 1
+Frame: VISIT, Confusions: 6, Esempi da annotare: 1
+Frame: SPEND-TIME_PASS-TIME, Confusions: 7, Esempi da annotare: 1
+Frame: HOST_MEAL_INVITE, Confusions: 1, Esempi da annotare: 1
+Frame: COMPLEXIFY, Confusions: 0, Esempi da annotare: 0
+Frame: DIET, Confusions: 0, Esempi da annotare: 0
+Frame: TREAT-WITH/BY, Confusions: 0, Esempi da annotare: 0
+Frame: CASTRATE, Confusions: 0, Esempi da annotare: 0
+Frame: PRETEND, Confusions: 0, Esempi da annotare: 0
+Frame: EMCEE, Confusions: 0, Esempi da annotare: 0
+
+Totale Confusioni su Tutti i Frame: 2215647
+Totale Esempi da Annotare: 2465
+```
+
+Adesso possiamo usare questa lista di frame per individuare gli esempi all'interno del dataset mosaico.
+Il programma dovrà iterare su questa lista di frame contenuta nel file "lista_frame_e_confusions.txt" e per ogni frame individuare gli esempi richiesti.
+Ho già un programma python che, preso in input un frame di verbatlas, tipo LIGHT-VERB, ti trova in quale pagina, in quale token span e con quale synset è stato confuso.
+Il programma è il seguente: (example_2.py)
+
+```python
+def search_frame_in_export_file(frame_name, file_path="export.txt"):
+    """
+    Searches for all instances of a specified frame in the export file and displays the corresponding page title 
+    and predicate line.
+
+    Args:
+        frame_name (str): The VerbAtlas frame to search for.
+        file_path (str): Path to the export file. Default is 'export.txt'.
+    """
+    try:
+        with open(file_path, 'r', encoding='utf-8') as file:
+            found_page = False
+            page_title = None
+            matches = []
+            
+            for line in file:
+                # Check if the line represents a page title
+                if '|' in line:
+                    page_title = line.strip()
+                    found_page = False  # Reset for each new page title
+                    
+                # Check if the line contains the frame name and starts with "Predicate"
+                elif line.startswith("Predicate") and f"Predicate: {frame_name}" in line:
+                    found_page = True
+                    matches.append((page_title, line.strip()))
+            
+            # Print all matches found for the specified frame
+            if matches:
+                print(f"\nMatches for frame '{frame_name}':")
+                for page, predicate_line in matches:
+                    print(f"Page: {page}\n  {predicate_line}\n")
+            else:
+                print(f"No matches found for frame '{frame_name}' in {file_path}.")
+
+    except FileNotFoundError:
+        print(f"Error: The file '{file_path}' was not found.")
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
+
+if __name__ == "__main__":
+    # Prompt user to input the frame name
+    frame_name = input("Enter the VerbAtlas frame name to search for: ").strip().upper()
+    
+    # Run the search function
+    search_frame_in_export_file(frame_name)
+
+```
+ed il risultato è un file di questo tipo:
+
+
+```
+Enter the VerbAtlas frame name to search for: 
+Matches for frame 'LIGHT-VERB':
+Page: Erik Adolf von Willebrand| en
+  Predicate: LIGHT-VERB, Token Span: (18, 19), Synset: make%2:41:00::
+
+Page: Catholic Church in Afghanistan| en
+  Predicate: LIGHT-VERB, Token Span: (4, 5), Synset: make%2:41:00::
+
+Page: Pelvic inflammatory disease| en
+  Predicate: LIGHT-VERB, Token Span: (6, 7), Synset: make%2:41:00::
+
+Page: Savanna Samson| en
+  Predicate: LIGHT-VERB, Token Span: (2, 3), Synset: make%2:41:00::
+
+Page: Savanna Samson| en
+  Predicate: LIGHT-VERB, Token Span: (1, 2), Synset: make%2:41:00::
+```
+
+Ogni volta che nel file di output "Page" viene menzionata allora vuol dire che c'è stata una confusione. Vorrei quindi che uno script iterasse sulla lista dei frame. Per ogni frame individui quali sono le pagine che contengono "confusions". Ed inoltre vorrei che per ogni frame si salvi il nome delle pagine da scaricare per ottenere un numero di esempi di "confusions" necessari rispetto a quanti ne servono per quel frame.
+
+Ad esempio supponiamo che per "light-verb"servano 3 esempi. In quel caso ci basterà scaricare "Erik Adolf von Willebrand", "Catholic Church in Afghanistan" e "Savanna Samson" che contengono un esempio di confusion a testa. 
+
+Per fare questo ho sviluppato lo script "seleziona_pagine_necessarie.py". Questo script ha come output tutti i frame contenuti in "lista_frame_e_confusions.txt" e per ognuno di questi frame individua le pagine necessarie ad arrivare al numero corretto di esempi.
+
+```
+Processando il frame: AUXILIARY, Esempi richiesti (minimo 5): 23
+  Pagine selezionate per il frame 'AUXILIARY' (Mismatch selezionati: 66):
+    - Erik Adolf von Willebrand| en (Mismatch trovati: 22)
+    - Catholic Church in Afghanistan| en (Mismatch trovati: 44)
+
+Processando il frame: COPULA, Esempi richiesti (minimo 5): 17
+  Pagine selezionate per il frame 'COPULA' (Mismatch selezionati: 18):
+    - Erik Adolf von Willebrand| en (Mismatch trovati: 18)
+
+Processando il frame: MODAL, Esempi richiesti (minimo 5): 18
+  Pagine selezionate per il frame 'MODAL' (Mismatch selezionati: 18):
+    - Workhouse| en (Mismatch trovati: 3)
+    - USS Illinois (BB-65)| en (Mismatch trovati: 1)
+    - Need for Speed: High Stakes| en (Mismatch trovati: 3)
+    - Soluntum| en (Mismatch trovati: 1)
+    - Kurt Wolff (aviator)| en (Mismatch trovati: 1)
+    - Butterflies (Michael Jackson song)| en (Mismatch trovati: 2)
+    - Theme Hospital| en (Mismatch trovati: 3)
+    - Malagasy Uprising| en (Mismatch trovati: 2)
+    - Nez Perce War| en (Mismatch trovati: 1)
+    - England expects that every man will do his duty| en (Mismatch trovati: 1)
+    - ```
+
+```
+
+Adesso una volta ottenuta questa lista dobbiamo ottenere effettivamente gli esempi.
+Bisogna estrarre:
+1. il frame verbatlas originale (quello che è presente anche in export.txt)
+2. il synset di wordnet con cui è stato confuso (presente in export.txt)
+3. la frase in plain text (da estrarre dalla pagina)
+
+Come ho scritto, per i primi due l'informazione si può trovare in export.txt
+Per il terzo è un po' più complicato, ma già l'ho fatto precedentemente in un'altra occasione.
+
+```
+import tkinter as tk
+from tkinter import ttk, messagebox
+import subprocess
+import json
+import os
+import re
+
+# Function to read the file and organize the data by page, combining duplicate entries
+def load_mismatches(filename):
+    mismatches = {}
+    current_page = None
+    
+    with open(filename, "r") as file:
+        for line in file:
+            line = line.strip()
+            if line.startswith("Page:"):
+                current_page = line.split("Page: ")[1]
+                if current_page not in mismatches:
+                    mismatches[current_page] = []
+            elif line.startswith("Predicate:") and current_page:
+                mismatches[current_page].append(line)
+    
+    return mismatches
+
+# Function to update the display based on the selected page
+def display_mismatches(event):
+    selected_page = page_var.get()
+    mismatch_text.config(state="normal")
+    mismatch_text.delete("1.0", tk.END)
+    
+    if selected_page in mismatches:
+        mismatch_details = mismatches[selected_page]
+        mismatch_text.insert(tk.END, "\n".join(mismatch_details))
+    
+    mismatch_text.config(state="disabled")
+
+# Function to download the selected page using mongoexport
+def download_page():
+    selected_page = page_var.get()
+    if selected_page:
+        title, language = selected_page.split("|")
+        title = title.strip()
+        language = language.strip()
+        
+        safe_title = title.replace(" ", "_")
+        output_filename = f"{safe_title}.json"
+        
+        command = [
+            "mongoexport",
+            "--db=mosaico",
+            "--collection=pages",
+            f'--query={{"title":"{title}","language":"{language}"}}',
+            f"--out={output_filename}",
+            "--username=admin",
+            "--password=password",
+            "--authenticationDatabase=admin"
+        ]
+        
+        try:
+            subprocess.run(command, check=True)
+            status_label.config(text=f"Page '{title}' downloaded as {output_filename}.", fg="green")
+            display_phrases_button.config(state="normal")
+        except subprocess.CalledProcessError as e:
+            status_label.config(text=f"Error downloading page '{title}': {e}", fg="red")
+
+# Function to extract and display AMR phrases that match specific predicates and token spans from SRL annotations
+def display_phrases():
+    selected_page = page_var.get()
+    title, language = selected_page.split("|")
+    safe_title = title.strip().replace(" ", "_")
+    output_filename = f"{safe_title}.json"
+    
+    try:
+        with open(output_filename, "r", encoding="utf-8") as file:
+            data = json.load(file)
+            
+            # Extract relevant mismatches for this page
+            relevant_mismatches = mismatches[selected_page]
+            token_spans_to_match = []
+            predicate_to_match = None
+
+            for mismatch in relevant_mismatches:
+                match = re.search(r"Predicate: ([A-Z-]+), Token Span: \((\d+), (\d+)\)", mismatch)
+                if match:
+                    predicate = match.group(1)
+                    token_span = (int(match.group(2)), int(match.group(3)))
+                    token_spans_to_match.append(token_span)
+                    predicate_to_match = predicate
+
+            if not predicate_to_match or not token_spans_to_match:
+                messagebox.showerror("Error", "No valid predicate or token spans found.")
+                return
+
+            # Find SRL annotations
+            relevant_phrases_indices = []
+            for annotation in data.get("materialized_annotations", []):
+                if annotation.get("name") == "srl":
+                    verbatlas_annotations = annotation.get("annotation", {}).get("inventory2document_spans", {}).get("verbatlas", [])
+                    
+                    for phrase_idx, phrase_annotations in enumerate(verbatlas_annotations):
+                        for annotation in phrase_annotations:
+                            if annotation.get("predicate", {}).get("label") == predicate_to_match:
+                                for argument in annotation.get("arguments", []):
+                                    if argument.get("role") == "V":
+                                        token_span = (argument.get("start"), argument.get("end"))
+                                        if token_span in token_spans_to_match:
+                                            relevant_phrases_indices.append(phrase_idx)
+
+            # Find AMR annotations and extract only relevant phrases
+            amr_phrases = []
+            for annotation in data.get("materialized_annotations", []):
+                if annotation.get("name") == "amr":
+                    sentence_graphs = annotation.get("annotation", {}).get("sentence_graphs", [])
+
+                    for idx, sentence_graph in enumerate(sentence_graphs):
+                        if idx in relevant_phrases_indices:
+                            if isinstance(sentence_graph, dict):
+                                penman_text = sentence_graph.get("penman", "").strip()
+                                # Extract only the human-readable part after "# ::snt" and before "(z1 /"
+                                match = re.search(r"# ::snt (.+?)(?:\(z1 /|$)", penman_text, re.DOTALL)
+                                if match:
+                                    phrase = match.group(1).strip()
+                                    amr_phrases.append(f"Phrase {idx + 1}: {phrase}")
+                                else:
+                                    amr_phrases.append(f"Phrase {idx + 1}: [Empty]")
+                            else:
+                                amr_phrases.append(f"Phrase {idx + 1}: [Empty]")
+                    break
+
+            # Display AMR phrases in text widget
+            phrase_text.config(state="normal")
+            phrase_text.delete("1.0", tk.END)
+            if amr_phrases:
+                phrase_text.insert(tk.END, "\n".join(amr_phrases))
+            else:
+                phrase_text.insert(tk.END, "No matching phrases found.")
+            phrase_text.config(state="disabled")
+            status_label.config(text=f"Displayed {len(amr_phrases)} phrases for '{title}'.", fg="blue")
+
+    except FileNotFoundError:
+        messagebox.showerror("Error", f"File '{output_filename}' not found. Please download the page first.")
+    except json.JSONDecodeError:
+        messagebox.showerror("Error", f"Failed to parse '{output_filename}' as JSON. Please check the file.")
+
+# Load mismatches from the file
+mismatch_file = "pages_with_mismatch.txt"
+mismatches = load_mismatches(mismatch_file)
+
+# Create the main application window
+root = tk.Tk()
+root.title("Page Mismatches Viewer")
+
+# Page selection label and dropdown
+page_label = tk.Label(root, text="Select a Page:")
+page_label.pack(pady=(10, 5))
+
+page_var = tk.StringVar()
+page_dropdown = ttk.Combobox(root, textvariable=page_var, values=list(mismatches.keys()), state="readonly")
+page_dropdown.pack(pady=5)
+page_dropdown.bind("<<ComboboxSelected>>", display_mismatches)
+
+mismatch_text = tk.Text(root, wrap="word", height=10, width=50, state="disabled")
+mismatch_text.pack(pady=(10, 5))
+
+download_button = tk.Button(root, text="Download Page", command=download_page)
+download_button.pack(pady=5)
+
+display_phrases_button = tk.Button(root, text="Display Phrases", command=display_phrases, state="disabled")
+display_phrases_button.pack(pady=5)
+
+phrase_text = tk.Text(root, wrap="word", height=15, width=60, state="disabled")
+phrase_text.pack(pady=(10, 5))
+
+status_label = tk.Label(root, text="")
+status_label.pack(pady=(5, 10))
+
+# Run the application
+root.mainloop()
+
+```
+In questo caso però i mismatches venivano caricati a partire da un file che conteneva tutti i mismatch relativi ad un dato frame, questa cosa deve ovviamente essere cambiata ed adattata al programma.
+
+### Meeting Feb 21
+Innanzitutto ho bisogno di quanti esempi ci sono da annotare
+
+lista_frame_e_confusions.txt è un file ottenuto tramite uno script che sostanzialmente prende un millesimo dagli esempi sbagliati per farli annotare
+Questo permette di avere una percentuale statisticamente coerente con il numero di errore per frame (frame con più errori=più esempi da annotare).
+
+```lista_frame_e_confusions.txt
+Frame: LIGHT-VERB, Confusions: 31596, Esempi da annotare: 32
+Frame: AUXILIARY, Confusions: 22096, Esempi da annotare: 23
+Frame: COPULA, Confusions: 16859, Esempi da annotare: 17
+Frame: MODAL, Confusions: 17102, Esempi da annotare: 18
+Frame: _, Confusions: 1058, Esempi da annotare: 2
+Frame: DISCOURSE-FUNCTION, Confusions: 129, Esempi da annotare: 1
+Frame: MUST, Confusions: 308, Esempi da annotare: 1
+Frame: START-FUNCTIONING, Confusions: 1, Esempi da annotare: 1
+Frame: SOLVE, Confusions: 1489, Esempi da annotare: 2
+Frame: PRINT, Confusions: 1921, Esempi da annotare: 2
+Frame: RESERVE, Confusions: 985, Esempi da annotare: 1
+Frame: FORGET, Confusions: 1333, Esempi da annotare: 2
+Frame: TAKE, Confusions: 43224, Esempi da annotare: 44
+Frame: CONTAIN, Confusions: 17155, Esempi da annotare: 18
+Frame: COME-FROM, Confusions: 8869, Esempi da annotare: 9
+```
+
+
+ora a partire da questa lista dobbiamo estrarre effettivamente gli esempi.
+Ho un programma che prende in input uno dei frame all'interno di questa lista e da in output tanti esempi quanti sono segnati in questo file come "esempi da annotare".
+Lo script si chiama "definitivo2.py" (da chiamare in un altro modo più fantasioso).
+Il risultato è un file csv che contiene le frasi di esempio per un frame più alcune informazioni utili all'annotazione:
+
+| examples_SOLVE.csv       |               |                |                 |                                                                                                                                                                                                                                           |
+| ------------------------ | ------------- | -------------- | --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Page**                 | **Predicate** | **Token Span** | **Synset**      | **Sentence**                                                                                                                                                                                                                              |
+| **Ulm School of Design** | SOLVE         | (18, 19)       | solve%2:31:00:: | At first the department was called Visual Design, but it quickly became clear their goal was to solve design problems in the area of mass media, so that in the 1956/56 academic year the name changed to Visual Communication Department |
+| **Bruno Pontecorvo**     | SOLVE         | (5, 6)         | solve%2:31:00:: | The problem had already been solved by Pontecorvo in 1968                                                                                                                                                                                 |
+| **Steam car**            | SOLVE         | (5, 6)         | solve%2:31:00:: | Automated quick-firing boilers solved these problems, but not before more efficient gasoline engines dominated the market and made steam cars obsolete                                                                                    |
+| **Posen speeches**       | SOLVE         | (11, 12)       | solve%2:31:00:: | The Jewish question in the countries that we occupy will be solved by the end of this year                                                                                                                                                |
+| **Posen speeches**       | SOLVE         | (5, 6)         | solve%2:31:00:: | The Jewish question has been solved within Germany itself and in general within the countries occupied by Germany                                                                                                                         |
+
+A questo punto mancano alcune informazioni in particolare manca il frame di verbatlas con cui è stato confuso. Per aggiungerlo bisogna fare una serie di passi che sono descritti in un capitolo precedente di questo documento.
+Questi passi sono implementati nello script "process_synsets.py" che prende in input il file csv ed aggiunge l'informazione del frame di verbatlas ottenuto dal synset di WSD.
+
+![[Pasted image 20250103162805.png]]
+
+|                          |                         |                |                 |                           |                                                                                                                                                                                                                                           |
+| ------------------------ | ----------------------- | -------------- | --------------- | ------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Page**                 | **SRL verbatlas frame** | **Token Span** | **WSD synset**  | **FRAME ottenuto da wsd** | **Sentence**                                                                                                                                                                                                                              |
+| **Ulm School of Design** | SOLVE                   | (18, 19)       | solve%2:31:00:: | DECIDE_DETERMINE          | At first the department was called Visual Design, but it quickly became clear their goal was to solve design problems in the area of mass media, so that in the 1956/56 academic year the name changed to Visual Communication Department |
+| **Bruno Pontecorvo**     | SOLVE                   | (5, 6)         | solve%2:31:00:: | DECIDE_DETERMINE          | The problem had already been solved by Pontecorvo in 1968                                                                                                                                                                                 |
+| **Steam car**            | SOLVE                   | (5, 6)         | solve%2:31:00:: | DECIDE_DETERMINE          | Automated quick-firing boilers solved these problems, but not before more efficient gasoline engines dominated the market and made steam cars obsolete                                                                                    |
+| **Posen speeches**       | SOLVE                   | (11, 12)       | solve%2:31:00:: | DECIDE_DETERMINE          | The Jewish question in the countries that we occupy will be solved by the end of this year                                                                                                                                                |
+| **Posen speeches**       | SOLVE                   | (5, 6)         | solve%2:31:00:: | DECIDE_DETERMINE          | The Jewish question has been solved within Germany itself and in general within the countries occupied by Germany                                                                                                                         |
+
+## Lavoro per il 22
+
+Okay a questo punto quello che devo fare è estrarre tutti i dati ed estrarli in maniera carina.
+Intanto per estrarli ho aggiunto un bel po di esempi al file "lista_frame_e_confusions.txt", modificando lo script che lo genera automaticamente. Ho messo un esempio ogni 90 mismatch per tenermi largo. Considerando che alcuni esempi avrei dovuto modificarli in ogni caso.
+
+```
+python counting_confusions.py > lista_frame_e_confusions.txt
+```
+
+A questo punto ho fatto alcune modifiche allo script. che adesso è 2000 volte più veloce perchè non scarica più la pagina in locale ma opera sulla pagina direttamente senza scaricare il file json (duh). 
+Lo script si chiama "definitivo3.py" un nome e un programma proprio, e il risultato è il solito file csv ricco di esempi. questa volta sono circa 20k
+
+```
+(Mosaico2) ➜  Mosaico_analysis wc -l all_examples.csv
+   21147 all_examples.csv
+```
+
+A questo punto questi esempi sono stati processati per aggiungere il frame associato al synset di WSD:
+
+```
+(Mosaico2) ➜  Mosaico_analysis python process_synsets.py all_examples.csv
+File saved as all_examples_withFRAME.csv
+```
+
+Adesso ho bisogno di uno script che pulisca il file dagli esempi che non ci dovrebbero essere. Per qualche motivo sono stati inclusi alcuni esempi in cui il frame di verbatlas e quello derivato da WSD sono uguali (quindi in teoria non dovrebbero risultare come errori e quindi non dovrebbero stare negli esempi). Questo è abbastanza preoccupante e andrebbe guardato meglio. è da comunicare il prima possibile al prof.
+
+```
+(Mosaico2) ➜  Mosaico_analysis python pulisci.py all_examples_withFRAME.csv
+```
+
+ed infine riformatto il file evidenziando il token ed aggiungendo contesto destro e sinistro
+
+```
+(Mosaico2) ➜  Mosaico_analysis python split_context.py all_examples_withFRAME_clean.csv
+Processed file saved as all_examples_withFRAME_clean_split.csv
+```
+
+
+
+### Patterns
+### LIGHT-VERB
+confuso generalmente con Carry-out-action, il synset di wsd è "make%2:41:00::". 
+light-verb non è presente su verbatlas, il che mi fa pensare che ci siano dei problemi con questa assegnazione (?)
+
+### MUST
+confuso nel caso in cui nella frase ci sia la forma "got to". SRL dice "MUST", mentre WSD lo associa a diverse forme di "get".
+get%2:32:00:: INCITE_INDUCE
+get%2:30:03:: OBTAIN
+get%2:30:00:: CHANGE_SWITCH
+get%2:40:00:: OBTAIN
+get%2:30:01:: INCITE_INDUCE
+
+## CONTAIN
+confuso con INCLUDE-AS
+il significato e molto simile con "CONTAIN" preso però nel senso fisico di contenere ed INCLUDE-AS nel senso anceh non fisico di "fare parte".
+
+# COME-FROM
+confuso con DERIVE
+
+In questo caso secondo me è ambiguo il frame di verbatlas.
+![[Pasted image 20250221101847.png]]
+Che senso ha avere un frame chiamato "Derive" con dentro "derive" nel senso di "come from" e un frame "COME FROM" separato?
+
+## SUBJECTIVE JUDGING
+confuso con INTERPRET.
+Anche qui la confusione è molto sottile.
+in "INTERPRET" abbiamo alcuni significati come "deemed to be" o "hypotesized"
+Mentre in "SUBJECTIVE JUDGING" abbiamo anche significati simili come "being regarded as"
+
+In una frase come "The history is considered fictional by most modern historians" è facile capire che non è semplice scegliere tra i due
