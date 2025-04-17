@@ -39,3 +39,10 @@ Sampling methods are different. If before most of the methods are based on linea
 
 ### Surrogate models
 
+![[Pasted image 20241210215417.png]]
+
+![[Pasted image 20241210222942.png]]
+
+![[Pasted image 20241210223214.png]]
+![[Pasted image 20241210223559.png]]
+![[Pasted image 20241210224256.png]]

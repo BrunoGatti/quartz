@@ -1,0 +1,19 @@
+{
+	"nodes":[
+		{"id":"db3cb593846705b8","type":"text","text":"# DIREZIONI DI RICERCA ","x":-620,"y":-260,"width":361,"height":87},
+		{"id":"523001e129826805","type":"text","text":"WSD and SRL intersezione","x":-120,"y":-420,"width":250,"height":60,"color":"1"},
+		{"id":"b59c1b12a38270dd","type":"text","text":"TODO:\n1. Test AMRbart encoding\n   \nDID:\n3. Export AMR data\n4. Experiment on retrieval on said data","x":266,"y":178,"width":534,"height":165,"color":"5"},
+		{"id":"39fdd277faf63661","type":"text","text":"TODO:\n1. estrarre dati sul 62% di match (entro fine mese)\n2. Leggi NounATLAS e VerbATLAS bene","x":266,"y":-444,"width":354,"height":184,"color":"2"},
+		{"id":"a28d85e8338844dc","type":"text","text":"TODO:\n1. Review all of Carlos Litterature\n2. Learn to use the AMR to BMR converter and analize the code\n\nDID:\nsecondo lorenzo BMR è morto. Anche Carlos non lo vede come un obiettivo sensato di ricerca. Semantic parsing in generale non ha un vero e proprio general purpose.","x":266,"y":-173,"width":334,"height":248,"color":"4"},
+		{"id":"1905d177889acd62","type":"text","text":"## RAG","x":-120,"y":100,"width":250,"height":50,"color":"5"},
+		{"id":"93c5f570dd7886ef","type":"text","text":"BMR generator X","x":-120,"y":-160,"width":250,"height":60,"color":"1"}
+	],
+	"edges":[
+		{"id":"2e36f94cd2d03720","fromNode":"db3cb593846705b8","fromSide":"right","toNode":"523001e129826805","toSide":"left"},
+		{"id":"32e637de91a39ebc","fromNode":"523001e129826805","fromSide":"right","toNode":"39fdd277faf63661","toSide":"left","color":"2"},
+		{"id":"51732c7deaa832e6","fromNode":"db3cb593846705b8","fromSide":"right","toNode":"93c5f570dd7886ef","toSide":"left"},
+		{"id":"cd7472b6cef9d784","fromNode":"93c5f570dd7886ef","fromSide":"right","toNode":"a28d85e8338844dc","toSide":"left","color":"4"},
+		{"id":"7af6a55b2129700d","fromNode":"db3cb593846705b8","fromSide":"right","toNode":"1905d177889acd62","toSide":"left"},
+		{"id":"2b9a3168eb547c15","fromNode":"1905d177889acd62","fromSide":"right","toNode":"b59c1b12a38270dd","toSide":"left","color":"5"}
+	]
+}

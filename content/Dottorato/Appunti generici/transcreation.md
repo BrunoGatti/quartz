@@ -1,0 +1,1 @@
+Una traduzione che non è letterale e richiede un adattamento al linguaggio, in generale considerando aspetti specifici della cultura delle lingue in traduzione per mantenere l'intento originale, lo stile, il tono e il contesto.
