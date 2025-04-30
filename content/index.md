@@ -4,7 +4,7 @@ publish: true
 ---
 ## WHOAMI [📷](https://www.instagram.com/bruno.gatt)
 
-Scimmia antropomorfa, dottore in informatica, dottorando a [[https://nlp.uniroma1.it/people|Sapienza NLP]] ed ex studente presso l' [Università degli Studi Roma Tor Vergata](https://web.uniroma2.it/)
+Scimmia antropomorfa, dottore in informatica, dottorando a [Sapienza NLP](https://nlp.uniroma1.it/people|) ed ex studente presso l' [Università degli Studi Roma Tor Vergata](https://web.uniroma2.it/)
 ## 💾 A cosa sto lavorando ultimamente:
 
 #### Ad un progetto di valutazione della cultura nei Large Language Models
