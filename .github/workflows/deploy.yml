@@ -26,6 +26,8 @@ jobs:
           node-version: 23
       - name: Install Dependencies
         run: npm ci
+      - name: Rebuild native modules
+        run: npm rebuild
       - name: Build Quartz
         run: npx quartz build
       - name: Upload artifact
