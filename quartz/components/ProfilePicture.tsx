@@ -18,7 +18,7 @@ const ProfilePicture: QuartzComponentConstructor = (userOpts?: Partial<Options>)
       <img
         src={opts.imageUrl}
         alt={opts.altText}
-        style={{ width: "100px", height: "auto", borderRadius: "50%" }}
+        style={{ width: "250px", height: "auto", borderRadius: "50%" }}
       />
     );
   }
