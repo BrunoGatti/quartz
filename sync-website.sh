@@ -30,4 +30,26 @@ fi
 
 git commit -m "Sync content from brain/website ($(date -u +%Y-%m-%dT%H:%M:%SZ))"
 git push origin v4
-echo "Pushed — build will run at https://github.com/BrunoGatti/quartz/actions"
+
+SHA="$(git rev-parse HEAD)"
+echo "Pushed $SHA — waiting for the deploy run to register..."
+
+if ! command -v gh &>/dev/null; then
+  echo "gh CLI not found — watch progress manually at https://github.com/BrunoGatti/quartz/actions"
+  exit 0
+fi
+
+RUN_ID=""
+for _ in $(seq 1 15); do
+  RUN_ID="$(gh run list --workflow "Deploy Quartz site to GitHub Pages" --commit "$SHA" \
+    --json databaseId --jq '.[0].databaseId' 2>/dev/null || true)"
+  [ -n "$RUN_ID" ] && break
+  sleep 2
+done
+
+if [ -z "$RUN_ID" ]; then
+  echo "Run didn't register in time — check manually at https://github.com/BrunoGatti/quartz/actions"
+  exit 0
+fi
+
+gh run watch "$RUN_ID" --exit-status
