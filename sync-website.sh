@@ -41,8 +41,8 @@ fi
 
 RUN_ID=""
 for _ in $(seq 1 15); do
-  RUN_ID="$(gh run list --workflow "Deploy Quartz site to GitHub Pages" --commit "$SHA" \
-    --json databaseId --jq '.[0].databaseId' 2>/dev/null || true)"
+  RUN_ID="$(gh run list --workflow "Deploy Quartz site to GitHub Pages" \
+    --json databaseId,headSha --jq ".[] | select(.headSha==\"$SHA\") | .databaseId" 2>/dev/null | head -1 || true)"
   [ -n "$RUN_ID" ] && break
   sleep 2
 done
