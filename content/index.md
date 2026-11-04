@@ -16,4 +16,4 @@ But here's all of them for the laziests of you:
 
 [CNER-coref]: An interpretable evaluation framework for creating per class Coreference Resolution evaluation.
 
-_Write pages here in `brain/website/`, then sync them to the site — see the "Website (Quartz)" project note in this vault for how._
+
