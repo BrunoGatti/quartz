@@ -8,8 +8,9 @@ export const sharedPageComponents: SharedLayout = {
   afterBody: [],
   footer: Component.Footer({
     links: {
-      GitHub: "https://github.com/jackyzha0/quartz",
-      "Discord Community": "https://discord.gg/cRFFHYye7t",
+      GitHub: "https://github.com/BrunoGatti",
+      Instagram: "https://www.instagram.com/bruno.gatt/",
+      LinkedIn: "https://www.linkedin.com/in/bruno-gatti-044554269/",
     },
   }),
 }
@@ -18,7 +19,7 @@ export const sharedPageComponents: SharedLayout = {
 export const defaultContentPageLayout: PageLayout = {
   beforeBody: [
     Component.ConditionalRender({
-      component: Component.ProfilePicture(),
+      component: Component.ProfilePicture({ imageUrl: "/quartz/assets/profile.jpg" }),
       condition: (page) => page.fileData.slug === "index",
     }),
     Component.ConditionalRender({

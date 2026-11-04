@@ -14,7 +14,7 @@ const config: QuartzConfig = {
     analytics: {
       provider: "plausible",
     },
-    baseUrl: "brunogatti.github.io",
+    baseUrl: "brunogatti.github.io/quartz",
     ignorePatterns: ["private", "templates", ".obsidian"],
     defaultDateType: "modified",
     theme: {
@@ -71,7 +71,7 @@ const config: QuartzConfig = {
       Plugin.Description(),
       Plugin.Latex({ renderEngine: "katex" }),
     ],
-    filters: [Plugin.ExplicitPublish()],
+    filters: [],
     emitters: [
       Plugin.AliasRedirects(),
       Plugin.ComponentResources(),
